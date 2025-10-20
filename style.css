@@ -110,10 +110,16 @@ body {
 
 .lema {
     font-size: 1.2em;
-    color: var(--cor-vermelho);
+    color: var(--cor-branco); 
     margin-bottom: 30px;
     font-weight: bold;
+    /* --- NOVO ESTILO PARA ITÁLICO --- */
+    font-style: italic;
+    /* -------------------------------- */
 }
+
+
+
 
 .botao-cta {
     display: inline-block;
