@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração | FACA NA CAVEIRA MG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <style>
+        /* Estilos adicionais para o formulário de login */
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            /* Usando fundo semi-transparente como o secao-padrao, mas com opacidade maior */
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--cor-vermelho);
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: var(--cor-amarelo);
+            font-family: var(--fonte-titulo);
+        }
+        .login-box input[type="password"] {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #222;
+            color: var(--cor-branco);
+            font-size: 1em;
+            text-align: center;
+        }
+        .login-box button {
+            padding: 10px 20px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: var(--fonte-titulo);
+            transition: background-color 0.3s;
+        }
+        .login-box button:hover {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-preto);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <a href="index.html"><img src="FACA.jpg" alt="Logo Motogrupo Faca na Caveira MG RJ-BRASIL" class="logo"></a>
+        </div>
+        
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="galeria.html">GALERIA</a></li>
+                <li><a href="historia.html">HISTÓRIA</a></li>
+                <li><a href="rotas.html">ROTAS E EVENTOS</a></li>
+                <li><a href="irmandade.html">IRMANDADE</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="administracao.html" class="ativo">ADMINISTRAÇÃO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="secao-padrao">
+        <div class="login-box">
+            <h2>ÁREA DE ADMINISTRAÇÃO</h2>
+            <p>Acesso restrito à planilha financeira.</p>
+            <input type="password" id="adminPassword" placeholder="Digite a Senha">
+            <button onclick="checkPassword()">ACESSAR PLANILHA</button>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
+    </footer>
+
+    <script>
+        // ATENÇÃO: Esta é uma verificação de senha simples no lado do cliente.
+        // A senha está visível no código-fonte e não deve ser usada para informações realmente sensíveis.
+        const CORRECT_PASSWORD = "2442";
+        const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
+
+        function checkPassword() {
+            const input = document.getElementById('adminPassword').value;
+            
+            if (input === CORRECT_PASSWORD) {
+                // Senha correta, redireciona para a planilha
+                window.location.href = GOOGLE_SHEET_URL;
+            } else {
+                // Senha incorreta
+                alert("ACESSO NEGADO: Senha de administrador incorreta.");
+                document.getElementById('adminPassword').value = ''; // Limpa o campo
+            }
+        }
+    </script>
+
+</body>
+</html>
