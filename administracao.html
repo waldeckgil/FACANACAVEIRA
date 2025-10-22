@@ -34,6 +34,7 @@
             font-size: 1em;
             text-align: center;
         }
+        /* ESTILO DO BOTÃO AGORA VISÍVEL */
         .login-box button {
             padding: 10px 20px;
             background-color: var(--cor-vermelho);
@@ -49,6 +50,7 @@
             background-color: var(--cor-amarelo);
             color: var(--cor-preto);
         }
+        /* FIM DO ESTILO DO BOTÃO */
     </style>
 </head>
 <body>
@@ -75,7 +77,9 @@
         <div class="login-box">
             <h2>ÁREA DE ADMINISTRAÇÃO</h2>
             <p>Acesso restrito à planilha financeira.</p>
-            <input type="password" id="adminPassword" placeholder="Digite a Senha">
+            
+            <input type="password" id="adminPassword" placeholder="Digite a Senha" onkeydown="handleKey(event)">
+            
             <button onclick="checkPassword()">ACESSAR PLANILHA</button>
         </div>
     </main>
@@ -85,11 +89,18 @@
     </footer>
 
     <script>
-        // ATENÇÃO: Esta é uma verificação de senha simples no lado do cliente.
-        // A senha está visível no código-fonte e não deve ser usada para informações realmente sensíveis.
-        const CORRECT_PASSWORD = "2442";
+        const CORRECT_PASSWORD = "adsumus";
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
 
+        // Função para verificar se a tecla pressionada é ENTER (desktop)
+        function handleKey(event) {
+            // Código da tecla 13 é o ENTER
+            if (event.keyCode === 13) { 
+                checkPassword();
+            }
+        }
+
+        // Função principal chamada pelo botão ou pela tecla ENTER
         function checkPassword() {
             const input = document.getElementById('adminPassword').value;
             
