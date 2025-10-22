@@ -3,7 +3,7 @@
 
 :root {
     --cor-preto: #111; /* Preto quase absoluto para o fundo */
-    --cor-vermelho: #FF0000; /* Amarelo */
+    --cor-vermelho: #FF0000; /* Vermelho */
     --cor-amarelo: #FFD700; /* Amarelo/Dourado do logo */
     --cor-branco: #EAEAEA; /* Branco suave para textos */
     --fonte-titulo: 'Oswald', sans-serif;
@@ -18,9 +18,17 @@
 
 body {
     font-family: var(--fonte-corpo);
-    background-color: var(--cor-preto);
     color: var(--cor-branco);
     line-height: 1.0;
+    
+    /* === NOVOS ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
+    background-image: url('Caveira_Motos.jpg'); 
+    background-size: cover; /* Garante que a imagem cubra todo o corpo */
+    background-repeat: no-repeat; /* Impede repetição */
+    background-attachment: fixed; /* Fixa a imagem, o conteúdo rola por cima */
+    background-position: center center; /* Centraliza a imagem */
+    background-color: var(--cor-preto); /* Cor de fallback */
+    /* ================================================= */
 }
 
 /* CABEÇALHO */
@@ -142,6 +150,10 @@ body {
 .secao-padrao {
     padding: 60px 50px;
     border-top: 1px solid #333;
+    
+    /* === NOVO FUNDO PARA CONTEÚDO PARA MELHOR LEGIBILIDADE === */
+    background-color: rgba(0, 0, 0, 0.75); /* Fundo preto semi-transparente */
+    /* ========================================================= */
 }
 
 .secao-padrao h2 {
