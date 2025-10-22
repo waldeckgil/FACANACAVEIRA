@@ -42,7 +42,7 @@ body {
 }
 
 .logo {
-    height: 80px; /* Ajuste o tamanho do logo */
+    height: 120px; /* Ajuste o tamanho do logo */
 }
 
 /* MENU DE NAVEGAÇÃO */
@@ -148,7 +148,7 @@ body {
 
 /* SEÇÕES SECUNDÁRIAS */
 .secao-padrao {
-    padding: 60px 50px;
+    padding: 30px 50px;
     border-top: 1px solid #333;
     
     /* === NOVO FUNDO PARA CONTEÚDO PARA MELHOR LEGIBILIDADE === */
@@ -169,7 +169,7 @@ body {
 
 /* RODAPÉ */
 .rodape {
-    text-align: center;
+    text-align: right; /* ALTERADO PARA ALINHAR À DIREITA */
     padding: 20px;
     background-color: #000;
     border-top: 3px solid var(--cor-vermelho);
