@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs
 # ===============================================
 # Token de Acesso Pessoal (PAT) do GitHub
 # (Será injetado como variável de ambiente no Render)
-GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', 'SEU_PAT_AQUI') 
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', 'TOKEN.AQUI') 
 
 # Repositório no GitHub
 REPO_OWNER = 'waldeckgil'
