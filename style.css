@@ -408,11 +408,12 @@ body {
     max-width: 1200px;
     margin: 40px auto;
     display: grid;
-    /* 3 colunas em telas grandes */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    /* Colunas menores para imagens mais compactas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
     padding: 0 20px;
 }
+
 
 .foto-galeria {
     width: 100%;
