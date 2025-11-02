@@ -419,7 +419,7 @@ body {
 
 .foto-galeria {
     width: 50%;
-    height:300px; /* Altura ainda menor para imagens mais compactas na galeria */
+    height:400px; /* Altura ainda menor para imagens mais compactas na galeria */
     object-fit: cover; /* Recorta a imagem para preencher o espaço sem distorcer */
     border: 3px solid var(--cor-vermelho);
     border-radius: 5px;
