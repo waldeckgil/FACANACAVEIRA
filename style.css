@@ -409,7 +409,8 @@ body {
     margin: 40px auto;
     display: grid;
     /* Colunas ainda menores para imagens mais compactas */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+
     gap: 15px;
     padding: 0 20px;
 }
