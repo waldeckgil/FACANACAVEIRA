@@ -20,9 +20,9 @@ body {
     font-family: var(--fonte-corpo);
     color: var(--cor-branco);
     line-height: 1.0;
-    
+
     /* === NOVOS ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
-    background-image: url('Caveira_Motos.jpg'); 
+    background-image: url('Caveira_Motos.jpg');
     background-size: cover; /* Garante que a imagem cubra todo o corpo */
     background-repeat: no-repeat; /* Impede repetição */
     background-attachment: fixed; /* Fixa a imagem, o conteúdo rola por cima */
@@ -66,20 +66,20 @@ body {
 
 .menu-principal a:hover, .menu-principal a.ativo {
     color: var(--cor-vermelho);
-    border-bottom: 2px solid var(--cor-amarelo); 
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
+    border-bottom: 2px solid var(--cor-amarelo);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
 /* SEÇÃO HOME (Com a Logo de Fundo) */
 .secao-home {
-    height: 70vh; 
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative; 
-    overflow: hidden; 
-    z-index: 1; 
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 /* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'ÁGUA) */
@@ -90,19 +90,19 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('FACA.jpg'); 
+    background-image: url('FACA.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%; /* Aumenta a logo para ocupar mais espaço */
     opacity: 0.15; /* Aumenta a visibilidade */
-    z-index: -1; 
+    z-index: -1;
 }
 
 .conteudo-principal {
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
-    z-index: 10; 
+    z-index: 10;
     /* ESTILO ADICIONADO PARA REDUZIR O TAMANHO (Home Page) */
     max-width: 800px; /* Define uma largura máxima de 800 pixels */
     width: 90%;      /* Usa 90% da largura da tela, mas nunca mais que 800px */
@@ -113,21 +113,18 @@ body {
     font-size: 3em;
     color: var(--cor-amarelo);
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px var(--cor-vermelho); 
+    text-shadow: 2px 2px 4px var(--cor-vermelho);
 }
 
 .lema {
     font-size: 1.2em;
-    color: var(--cor-branco); 
+    color: var(--cor-branco);
     margin-bottom: 30px;
     font-weight: bold;
     /* --- NOVO ESTILO PARA ITÁLICO --- */
     font-style: italic;
     /* -------------------------------- */
 }
-
-
-
 
 .botao-cta {
     display: inline-block;
@@ -150,7 +147,7 @@ body {
 .secao-padrao {
     padding: 60px 50px;
     border-top: 1px solid #333;
-    
+
     /* === NOVO FUNDO PARA CONTEÚDO PARA MELHOR LEGIBILIDADE === */
     background-color: rgba(0, 0, 0, 0.75); /* Fundo preto semi-transparente */
     /* ========================================================= */
@@ -229,7 +226,7 @@ body {
 
 .foto-rota {
     width: 100%;
-    height: 200px; 
+    height: 200px;
     object-fit: cover;
 }
 
@@ -372,7 +369,7 @@ body {
 /* --- CORES PADRÃO PARA BOTÕES DE REDES SOCIAIS (ADICIONADO) --- */
 .rede-social {
     /* Garante que o texto dentro dos botões seja branco */
-    color: var(--cor-branco) !important; 
+    color: var(--cor-branco) !important;
 }
 
 .whatsapp-btn {
@@ -401,7 +398,6 @@ body {
 }
 /* ------------------------------------------------------------- */
 
-
 /* --- ESTILOS GALERIA --- */
 
 .galeria-grid {
@@ -410,12 +406,9 @@ body {
     display: grid;
     /* Colunas ainda menores para imagens mais compactas */
     grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-
     gap: 15px;
     padding: 0 20px;
 }
-
-
 
 .foto-galeria {
     width: 100%;
@@ -426,28 +419,24 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-
-
-
 .foto-galeria:hover {
     transform: scale(1.02);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Efeito de brilho amarelo no hover */
 }
 
-
 /* ==================================== */
 /* RESPONSIVIDADE (MOBILE)     */
 /* ==================================== */
 @media (max-width: 768px) {
-    
+
     /* Cabeçalho */
     .cabecalho {
-        flex-direction: column; 
+        flex-direction: column;
         padding: 10px 20px;
     }
 
     .menu-principal ul {
-        flex-direction: column; 
+        flex-direction: column;
         text-align: center;
         padding-top: 10px;
     }
@@ -457,7 +446,7 @@ body {
     }
 
     .logo {
-        height: 60px; 
+        height: 60px;
     }
 
     /* Home Page */
@@ -467,14 +456,12 @@ body {
     }
 
     .conteudo-principal h1 {
-        font-size: 2em; 
+        font-size: 2em;
     }
 
     /* Contato e Blocos */
     .info-contato-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
-    
-
 
 }
