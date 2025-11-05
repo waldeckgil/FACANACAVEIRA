@@ -7,37 +7,68 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        .aniversariante-card {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--cor-vermelho);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
+        .aniversariante-destaque {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 3px solid var(--cor-vermelho);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
             text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
         }
-        .aniversariante-card:hover {
-            transform: scale(1.05);
-        }
-        .aniversariante-card img {
-            width: 120px;
-            height: 120px;
+        .aniversariante-destaque img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 3px solid var(--cor-amarelo);
-            margin-bottom: 15px;
+            border: 4px solid var(--cor-amarelo);
+            margin-bottom: 20px;
         }
-        .aniversariante-card h3 {
+        .aniversariante-destaque h3 {
             color: var(--cor-amarelo);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-family: var(--fonte-titulo);
+            font-size: 1.8em;
         }
-        .aniversariante-card p {
+        .aniversariante-destaque p {
             color: var(--cor-branco);
             margin: 5px 0;
+            font-size: 1.1em;
         }
-        .data-aniversario {
+        .data-destaque {
             font-weight: bold;
             color: var(--cor-vermelho);
+            font-size: 1.3em;
+        }
+        .lista-aniversariantes {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--cor-vermelho);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .lista-aniversariantes h4 {
+            color: var(--cor-amarelo);
+            margin-bottom: 15px;
+            font-family: var(--fonte-titulo);
+            text-align: center;
+        }
+        .lista-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .lista-item:last-child {
+            border-bottom: none;
+        }
+        .lista-item .nome {
+            color: var(--cor-branco);
+            font-weight: bold;
+        }
+        .lista-item .data {
+            color: var(--cor-vermelho);
+            font-weight: bold;
         }
         .sem-aniversariantes {
             text-align: center;
@@ -53,6 +84,7 @@
             font-family: var(--fonte-titulo);
         }
     </style>
+
 </head>
 <body>
 
@@ -76,15 +108,20 @@
 
     <main class="secao-padrao">
         <div class="container-texto">
-            <h2>ANIVERSARIANTES DO MÊS</h2>
+            <h2>ANIVERSARIANTE EM DESTAQUE</h2>
             <p>Parabéns aos irmãos que celebram mais um ano de estrada! Que venham muitos quilômetros de felicidades.</p>
             <div id="mes-atual" class="mes-atual"></div>
         </div>
 
-        <div id="aniversariantes-container">
-            <!-- Aniversariantes serão carregados aqui via JavaScript -->
+        <div id="aniversariante-destaque">
+            <!-- Aniversariante em destaque será carregado aqui -->
+        </div>
+
+        <div id="lista-aniversariantes">
+            <!-- Lista discreta de aniversariantes será carregada aqui -->
         </div>
     </main>
+
 
     <footer class="rodape">
         <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
@@ -136,16 +173,34 @@
             });
         }
 
-        function criarCardAniversariante(aniversariante) {
+        function criarAniversarianteDestaque(aniversariante) {
             const [dia, mes] = aniversariante.data.split('-');
             return `
-                <div class="aniversariante-card">
+                <div class="aniversariante-destaque">
                     <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/membro_placeholder.jpg'">
                     <h3>${aniversariante.nome}</h3>
                     <p>${aniversariante.cargo}</p>
-                    <p class="data-aniversario">${dia}/${mes}</p>
+                    <p class="data-destaque">${dia}/${mes}</p>
                 </div>
             `;
+        }
+
+        function criarListaAniversariantes(aniversariantesDoMes) {
+            if (aniversariantesDoMes.length === 0) {
+                return '<p class="sem-aniversariantes">Nenhum aniversariante neste mês. Mas a família cresce a cada dia!</p>';
+            }
+
+            let listaHTML = '<h4>Todos os Aniversariantes do Mês</h4>';
+            aniversariantesDoMes.forEach(aniversariante => {
+                const [dia, mes] = aniversariante.data.split('-');
+                listaHTML += `
+                    <div class="lista-item">
+                        <span class="nome">${aniversariante.nome}</span>
+                        <span class="data">${dia}/${mes}</span>
+                    </div>
+                `;
+            });
+            return listaHTML;
         }
 
         function exibirAniversariantes() {
@@ -156,14 +211,21 @@
             // Atualizar título do mês
             document.getElementById('mes-atual').textContent = `Aniversariantes de ${nomeMes}`;
 
-            const container = document.getElementById('aniversariantes-container');
+            const destaqueContainer = document.getElementById('aniversariante-destaque');
+            const listaContainer = document.getElementById('lista-aniversariantes');
 
             if (aniversariantesDoMes.length === 0) {
-                container.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante neste mês. Mas a família cresce a cada dia!</p>';
+                destaqueContainer.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante em destaque neste mês.</p>';
+                listaContainer.innerHTML = '';
             } else {
-                container.innerHTML = aniversariantesDoMes.map(criarCardAniversariante).join('');
+                // Mostrar o primeiro aniversariante como destaque
+                destaqueContainer.innerHTML = criarAniversarianteDestaque(aniversariantesDoMes[0]);
+
+                // Mostrar lista discreta de todos
+                listaContainer.innerHTML = criarListaAniversariantes(aniversariantesDoMes);
             }
         }
+
 
         // Carregar aniversariantes quando a página carregar
         document.addEventListener('DOMContentLoaded', exibirAniversariantes);
