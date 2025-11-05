@@ -1,5 +1,7 @@
 # push_to_git_v2.ps1
-# Lembre-se: Salve este script com a codificação UTF-8 para evitar problemas com acentuação.
+# ----------------------------------------------------------------------
+# NOTA IMPORTANTE: SALVE ESTE ARQUIVO COM A CODIFICAÇÃO UTF-8 NO SEU EDITOR!
+# ----------------------------------------------------------------------
 
 # Define o caminho absoluto para o executável do Git.
 # Isso resolve o problema da tela "Selecionar um aplicativo para abrir 'git'".
@@ -61,8 +63,8 @@ if ($isFirstPush.ToUpper() -eq "S") {
 Write-Host "Executando: $gitExe branch -M main (garantindo o nome correto do branch: master -> main)"
 & $gitExe branch -M main
 
-# Comando para remover .env do cache. Adicionar ao .gitignore é a melhor prática.
-# Foi envolvido em um bloco 'try' para ignorar o erro fatal se o arquivo não estiver rastreado.
+# CORREÇÃO: Remove o arquivo .env do cache do Git, usando try/catch
+# para evitar que o script falhe se o arquivo não estiver rastreado (pathspec fatal).
 try {
     Write-Host "Executando: $gitExe rm --cached .env (Ignorando se o arquivo não estiver rastreado)"
     & $gitExe rm --cached .env | Out-Null
@@ -88,4 +90,15 @@ if ([string]::IsNullOrEmpty($commitMessage)) {
 Write-Host "Executando: $gitExe commit -m `"$commitMessage`""
 & $gitExe commit -m "$commitMessage"
 
-# *** NOVO COMANDO:
+# *** CORREÇÃO CRÍTICA: PULL ANTES DO PUSH ***
+# Este passo baixa as alterações do remoto e as mescla localmente,
+# resolvendo o erro '! [rejected] (non-fast-forward)' ou '(fetch first)'.
+Write-Host "Executando: $gitExe pull origin main (Sincronizando com o remoto antes do push)"
+& $gitExe pull origin main
+
+# Envia as alterações para o repositório remoto na branch 'main'
+Write-Host "Executando: $gitExe push -u origin main"
+& $gitExe push -u origin main
+
+Write-Host "---"
+Write-Host "Processo de envio para o GitHub concluído com sucesso!"
