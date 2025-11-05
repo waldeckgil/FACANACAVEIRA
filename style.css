@@ -21,31 +21,31 @@ body {
     color: var(--cor-branco);
     line-height: 1.0;
     
-    /* === NOVOS ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
+    /* === ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
     background-image: url('Caveira_Motos.jpg'); 
     background-size: cover; /* Garante que a imagem cubra todo o corpo */
-    background-repeat: no-repeat; /* Impede repetição */
-    background-attachment: fixed; /* Fixa a imagem, o conteúdo rola por cima */
+    background-repeat: no-repeat; /* Impede repeticao */
+    background-attachment: fixed; /* Fixa a imagem, o conteudo rola por cima */
     background-position: center center; /* Centraliza a imagem */
     background-color: var(--cor-preto); /* Cor de fallback */
     /* ================================================= */
 }
 
-/* CABEÇALHO */
+/* CABECALHO */
 .cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
     background-color: #000;
-    border-bottom: 3px solid var(--cor-vermelho); /* Linha divisória vermelha */
+    border-bottom: 3px solid var(--cor-vermelho); /* Linha divisoria vermelha */
 }
 
 .logo {
     height: 120px; /* Ajuste o tamanho do logo */
 }
 
-/* MENU DE NAVEGAÇÃO */
+/* MENU DE NAVEGACAO */
 .menu-principal ul {
     list-style: none;
     display: flex;
@@ -70,7 +70,7 @@ body {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
 }
 
-/* SEÇÃO HOME (Com a Logo de Fundo) */
+/* SECAO HOME (Com a Logo de Fundo) */
 .secao-home {
     height: 70vh; 
     display: flex;
@@ -82,7 +82,7 @@ body {
     z-index: 1; 
 }
 
-/* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'ÁGUA) */
+/* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'AGUA) */
 .secao-home::before {
     content: '';
     position: absolute;
@@ -93,7 +93,7 @@ body {
     background-image: url('FACA.jpg'); 
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80%; /* Aumenta a logo para ocupar mais espaço */
+    background-size: 80%; /* Aumenta a logo para ocupar mais espaco */
     opacity: 0.15; /* Aumenta a visibilidade */
     z-index: -1; 
 }
@@ -104,7 +104,7 @@ body {
     border-radius: 10px;
     z-index: 10; 
     /* ESTILO ADICIONADO PARA REDUZIR O TAMANHO (Home Page) */
-    max-width: 800px; /* Define uma largura máxima de 800 pixels */
+    max-width: 800px; /* Define uma largura maxima de 800 pixels */
     width: 90%;      /* Usa 90% da largura da tela, mas nunca mais que 800px */
 }
 
@@ -121,7 +121,7 @@ body {
     color: var(--cor-branco); 
     margin-bottom: 30px;
     font-weight: bold;
-    /* --- NOVO ESTILO PARA ITÁLICO --- */
+    /* --- NOVO ESTILO PARA ITALICO --- */
     font-style: italic;
     /* -------------------------------- */
 }
@@ -146,12 +146,12 @@ body {
     color: var(--cor-preto);
 }
 
-/* SEÇÕES SECUNDÁRIAS */
+/* SECOES SECUNDARIAS */
 .secao-padrao {
     padding: 30px 50px;
     border-top: 1px solid #333;
     
-    /* === NOVO FUNDO PARA CONTEÚDO PARA MELHOR LEGIBILIDADE === */
+    /* === NOVO FUNDO PARA CONTEUDO PARA MELHOR LEGIBILIDADE === */
     background-color: rgba(0, 0, 0, 0.75); /* Fundo preto semi-transparente */
     /* ========================================================= */
 }
@@ -167,9 +167,9 @@ body {
     padding: 5px 0;
 }
 
-/* RODAPÉ */
+/* RODAPE */
 .rodape {
-    text-align: right; /* ALTERADO PARA ALINHAR À DIREITA */
+    text-align: right; /* ALTERADO PARA ALINHAR A DIREITA */
     padding: 20px;
     background-color: #000;
     border-top: 3px solid var(--cor-vermelho);
@@ -178,7 +178,7 @@ body {
     font-size: 0.9em;
 }
 
-/* --- ESTILOS GERAIS DE CONTEÚDO --- */
+/* --- ESTILOS GERAIS DE CONTEUDO --- */
 
 .container-texto {
     max-width: 900px;
@@ -204,7 +204,7 @@ body {
     font-weight: bold;
 }
 
-/* --- ESTILOS ROTAS (Grid de Cartões) --- */
+/* --- ESTILOS ROTAS (Grid de Cartoes) --- */
 
 .grid-rotas {
     display: grid;
@@ -357,11 +357,11 @@ body {
     margin: 5px 0;
 }
 
-/* O estilo genérico abaixo será sobrescrito pelas classes específicas de cor */
+/* O estilo generico abaixo sera sobrescrito pelas classes especificas de cor */
 .rede-social {
     display: block;
     padding: 10px;
-    background-color: var(--cor-amarelo); /* Cor base (será sobrescrita) */
+    background-color: var(--cor-amarelo); /* Cor base (sera sobrescrita) */
     color: var(--cor-preto);
     text-decoration: none;
     font-weight: bold;
@@ -369,9 +369,9 @@ body {
     margin-top: 10px;
 }
 
-/* --- CORES PADRÃO PARA BOTÕES DE REDES SOCIAIS (ADICIONADO) --- */
+/* --- CORES PADRAO PARA BOTOES DE REDES SOCIAIS (ADICIONADO) --- */
 .rede-social {
-    /* Garante que o texto dentro dos botões seja branco */
+    /* Garante que o texto dentro dos botoes seja branco */
     color: var(--cor-branco) !important; 
 }
 
@@ -384,10 +384,10 @@ body {
 }
 
 .instagram-btn {
-    background-color: #E4405F; /* Vermelho/Rosa do Instagram (Cor primária) */
+    background-color: #E4405F; /* Vermelho/Rosa do Instagram (Cor primaria) */
 }
 
-/* Garante que a transição de cor no hover seja suave */
+/* Garante que a transicao de cor no hover seja suave */
 .whatsapp-btn:hover {
     background-color: #128C7E; /* Verde mais escuro no hover */
 }
@@ -402,22 +402,23 @@ body {
 /* ------------------------------------------------------------- */
 
 
-/* --- ESTILOS GALERIA --- */
+/* --- ESTILOS GALERIA (CORRIGIDO PARA RESPONSIVIDADE) --- */
 
 .galeria-grid {
     max-width: 1200px;
     margin: 40px auto;
     display: grid;
-    /* 3 colunas em telas grandes */
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    /* CORRIGIDO: Usa 250px como largura minima, permitindo 4 ou mais colunas responsivas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 15px;
     padding: 0 20px;
 }
 
 .foto-galeria {
     width: 100%;
-    height: 300px; /* Altura fixa para alinhar as fotos */
-    object-fit: cover; /* Recorta a imagem para preencher o espaço sem distorcer */
+    /* CORRIGIDO: Forca a proporcao 1:1 (quadrada), removendo a altura fixa (300px) */
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; /* Recorta a imagem para preencher o espaco sem distorcer */
     border: 3px solid var(--cor-vermelho);
     border-radius: 5px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -430,11 +431,11 @@ body {
 
 
 /* ==================================== */
-/* RESPONSIVIDADE (MOBILE)     */
+/* RESPONSIVIDADE (MOBILE)      */
 /* ==================================== */
 @media (max-width: 768px) {
     
-    /* Cabeçalho */
+    /* Cabecalho */
     .cabecalho {
         flex-direction: column; 
         padding: 10px 20px;
