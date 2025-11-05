@@ -1,3 +1,6 @@
+# push_to_git_v2.ps1
+# Lembre-se: Salve este script com a codificação UTF-8 para evitar problemas com acentuação.
+
 # Define o caminho absoluto para o executável do Git.
 # Isso resolve o problema da tela "Selecionar um aplicativo para abrir 'git'".
 $gitExe = "C:\Program Files\Git\bin\git.exe"
@@ -58,9 +61,14 @@ if ($isFirstPush.ToUpper() -eq "S") {
 Write-Host "Executando: $gitExe branch -M main (garantindo o nome correto do branch: master -> main)"
 & $gitExe branch -M main
 
-# Remove o arquivo .env do cache do Git para que ele não seja rastreado
-Write-Host "Executando: $gitExe rm --cached .env"
-& $gitExe rm --cached .env
+# Comando para remover .env do cache. Adicionar ao .gitignore é a melhor prática.
+# Foi envolvido em um bloco 'try' para ignorar o erro fatal se o arquivo não estiver rastreado.
+try {
+    Write-Host "Executando: $gitExe rm --cached .env (Ignorando se o arquivo não estiver rastreado)"
+    & $gitExe rm --cached .env | Out-Null
+} catch {
+    Write-Host "Aviso: O arquivo .env não estava rastreado. Continuar..."
+}
 
 # Adiciona todos os arquivos alterados ao stage
 Write-Host "Executando: $gitExe add ."
@@ -80,9 +88,4 @@ if ([string]::IsNullOrEmpty($commitMessage)) {
 Write-Host "Executando: $gitExe commit -m `"$commitMessage`""
 & $gitExe commit -m "$commitMessage"
 
-# Envia as alterações para o repositório remoto na branch 'main'
-Write-Host "Executando: $gitExe push -u origin main"
-& $gitExe push -u origin main
-
-Write-Host "---"
-Write-Host "Processo de envio para o GitHub concluído com sucesso!"
+# *** NOVO COMANDO:
