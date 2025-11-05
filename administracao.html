@@ -51,6 +51,110 @@
             color: var(--cor-preto);
         }
         /* FIM DO ESTILO DO BOTÃO */
+
+        #admin-menu {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #admin-menu h2 {
+            margin-bottom: 30px;
+            color: var(--cor-amarelo);
+            font-family: var(--fonte-titulo);
+        }
+        .admin-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .admin-card {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--cor-vermelho);
+            border-radius: 8px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .admin-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        .admin-card h3 {
+            color: var(--cor-amarelo);
+            margin-bottom: 15px;
+            font-family: var(--fonte-titulo);
+        }
+        .admin-card p {
+            color: var(--cor-branco);
+            margin-bottom: 20px;
+        }
+        .admin-card button {
+            padding: 12px 24px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: var(--fonte-titulo);
+            transition: background-color 0.3s;
+        }
+        .admin-card button:hover {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-preto);
+        }
+
+        /* Estilos para o formulário de inclusão */
+        #form-aniversariante {
+            display: none;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--cor-vermelho);
+            border-radius: 8px;
+        }
+        #form-aniversariante h3 {
+            color: var(--cor-amarelo);
+            margin-bottom: 20px;
+            font-family: var(--fonte-titulo);
+        }
+        #form-aniversariante label {
+            display: block;
+            color: var(--cor-branco);
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        #form-aniversariante select,
+        #form-aniversariante input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #222;
+            color: var(--cor-branco);
+            font-size: 1em;
+        }
+        #form-aniversariante button {
+            padding: 12px 24px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: var(--fonte-titulo);
+            transition: background-color 0.3s;
+        }
+        #form-aniversariante button:hover {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-preto);
+        }
+
     </style>
 </head>
 <body>
@@ -88,9 +192,45 @@
 
         <div id="admin-menu" style="display: none;">
             <h2>MENU ADMINISTRATIVO</h2>
-            <button onclick="acessarPlanilha()">Acesso à Planilha Financeira</button>
-            <button onclick="incluirAniversariante()">Inclusão de Aniversariante</button>
+            <div class="admin-options">
+                <div class="admin-card" onclick="acessarPlanilha()">
+                    <h3>📊 PLANILHA FINANCEIRA</h3>
+                    <p>Acesse a planilha financeira do grupo para visualizar e editar dados administrativos.</p>
+                    <button>ACESSAR PLANILHA</button>
+                </div>
+                <div class="admin-card" onclick="mostrarFormAniversariante()">
+                    <h3>🎂 ANIVERSARIANTES</h3>
+                    <p>Adicione novos membros à lista de aniversariantes do mês.</p>
+                    <button>INCLUIR ANIVERSARIANTE</button>
+                </div>
+            </div>
+
+            <div id="form-aniversariante">
+                <h3>Adicionar Aniversariante</h3>
+                <form onsubmit="adicionarAniversariante(event)">
+                    <label for="nome-membro">Nome do Membro:</label>
+                    <select id="nome-membro" required>
+                        <option value="">Selecione um membro...</option>
+                        <option value="SELVA">SELVA</option>
+                        <option value="[SILAS]">[SILAS]</option>
+                        <option value="VALERIA">VALERIA</option>
+                        <option value="Missão">Missão (WALDECK)</option>
+                        <option value="CELESTE">CELESTE</option>
+                        <option value="AMARO">AMARO</option>
+                        <option value="Kleber">Kleber</option>
+                        <option value="Nandos">Nandos</option>
+                        <option value="[Harvre]">[Harvre]</option>
+                        <option value="[NICKNAME 2]">[NICKNAME 2]</option>
+                    </select>
+
+                    <label for="data-aniversario">Data de Aniversário (DD-MM):</label>
+                    <input type="text" id="data-aniversario" placeholder="Ex: 15-01" pattern="\d{2}-\d{2}" required>
+
+                    <button type="submit">ADICIONAR</button>
+                </form>
+            </div>
         </div>
+
     </main>
 
 
@@ -129,9 +269,30 @@
             window.location.href = GOOGLE_SHEET_URL;
         }
 
-        function incluirAniversariante() {
-            alert("Funcionalidade de inclusão de aniversariante em desenvolvimento. Em breve será possível adicionar novos membros.");
+        function mostrarFormAniversariante() {
+            const form = document.getElementById('form-aniversariante');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
+
+        function adicionarAniversariante(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome-membro').value;
+            const data = document.getElementById('data-aniversario').value;
+
+            if (nome && data) {
+                // Aqui você pode adicionar lógica para salvar no servidor ou localStorage
+                alert(`Aniversariante adicionado:\nNome: ${nome}\nData: ${data}\n\nNota: Esta funcionalidade está em desenvolvimento. Os dados serão salvos permanentemente em breve.`);
+
+                // Limpar formulário
+                document.getElementById('nome-membro').value = '';
+                document.getElementById('data-aniversario').value = '';
+
+                // Esconder formulário
+                document.getElementById('form-aniversariante').style.display = 'none';
+            }
+        }
+
 
     </script>
 
