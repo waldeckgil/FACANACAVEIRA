@@ -156,13 +156,14 @@
             const [dia, mes] = aniversariante.data.split('-');
             return `
                 <div class="aniversariante-card">
-                    <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/membro_placeholder.jpg'">
+                    <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/FACA.jpg'">
                     <h3>${aniversariante.nome}</h3>
                     <p>${aniversariante.cargo}</p>
                     <p class="data-aniversario">${dia}/${mes}</p>
                 </div>
             `;
         }
+
 
         function ordenarPorData(aniversariantes) {
             return aniversariantes.sort((a, b) => {
