@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniversariantes | FACA NA CAVEIRA MG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        .aniversariante-card {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--cor-vermelho);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .aniversariante-card:hover {
+            transform: scale(1.05);
+        }
+        .aniversariante-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--cor-amarelo);
+            margin-bottom: 15px;
+        }
+        .aniversariante-card h3 {
+            color: var(--cor-amarelo);
+            margin-bottom: 5px;
+            font-family: var(--fonte-titulo);
+        }
+        .aniversariante-card p {
+            color: var(--cor-branco);
+            margin: 5px 0;
+        }
+        .data-aniversario {
+            font-weight: bold;
+            color: var(--cor-vermelho);
+        }
+        .sem-aniversariantes {
+            text-align: center;
+            color: var(--cor-branco);
+            font-size: 1.2em;
+            margin: 50px 0;
+        }
+        .mes-atual {
+            text-align: center;
+            color: var(--cor-amarelo);
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-family: var(--fonte-titulo);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <a href="index.html"><img src="FACA.jpg" alt="Logo Motogrupo Faca na Caveira MG RJ-BRASIL" class="logo"></a>
+        </div>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="galeria.html">GALERIA</a></li>
+                <li><a href="historia.html">HISTÓRIA</a></li>
+                <li><a href="rotas.html">PROGRAMAÇÃO E EVENTOS</a></li>
+                <li><a href="irmandade.html">IRMANDADE</a></li>
+                <li><a href="aniversariantes.html" class="ativo">ANIVERSARIANTES</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="administracao.html">ADMINISTRAÇÃO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="secao-padrao">
+        <div class="container-texto">
+            <h2>ANIVERSARIANTES DO MÊS</h2>
+            <p>Parabéns aos irmãos que celebram mais um ano de estrada! Que venham muitos quilômetros de felicidades.</p>
+            <div id="mes-atual" class="mes-atual"></div>
+        </div>
+
+        <div id="aniversariantes-container">
+            <!-- Aniversariantes serão carregados aqui via JavaScript -->
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
+    </footer>
+
+    <script>
+        // Dados dos aniversariantes (serão carregados de um arquivo JSON ou localStorage)
+        const aniversariantes = [
+            { nome: "SELVA", data: "15-01", foto: "MEMBROS/SELVA.jpg", cargo: "PRESIDENTE" },
+            { nome: "VALERIA", data: "22-03", foto: "MEMBROS/VALERIA.jpg", cargo: "MEMBRO FUNDADOR" },
+            { nome: "WALDECK", data: "10-05", foto: "MEMBROS/WALDECK.jpg", cargo: "MEMBRO PP" },
+            { nome: "CELESTE", data: "08-07", foto: "MEMBROS/CELESTE.png", cargo: "MEMBRO" },
+            { nome: "AMARO", data: "14-09", foto: "MEMBROS/AMARO.png", cargo: "MEMBRO" },
+            { nome: "KLEBER", data: "03-11", foto: "MEMBROS/kleber.png", cargo: "MEMBRO" },
+            { nome: "NANDO", data: "27-12", foto: "MEMBROS/Nando.png", cargo: "MEMBRO PP" },
+            { nome: "HARVRE", data: "19-02", foto: "MEMBROS/Harvre.png", cargo: "MEMBRO" },
+            { nome: "[SILAS]", data: "05-04", foto: "MEMBROS/SILAS_VICE_PRESIDENTE.jpg", cargo: "VICE-PRESIDENTE" }
+        ];
+
+        // Nomes dos meses em português
+        const meses = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        function obterMesAtual() {
+            const dataAtual = new Date();
+            return dataAtual.getMonth() + 1; // getMonth() retorna 0-11, então +1
+        }
+
+        function obterNomeMes(mes) {
+            return meses[mes - 1];
+        }
+
+        function filtrarAniversariantesDoMes() {
+            const mesAtual = obterMesAtual();
+            return aniversariantes.filter(aniversariante => {
+                const mesAniversario = parseInt(aniversariante.data.split('-')[1]);
+                return mesAniversario === mesAtual;
+            });
+        }
+
+        function criarCardAniversariante(aniversariante) {
+            const [dia, mes] = aniversariante.data.split('-');
+            return `
+                <div class="aniversariante-card">
+                    <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/membro_placeholder.jpg'">
+                    <h3>${aniversariante.nome}</h3>
+                    <p>${aniversariante.cargo}</p>
+                    <p class="data-aniversario">${dia}/${mes}</p>
+                </div>
+            `;
+        }
+
+        function exibirAniversariantes() {
+            const mesAtual = obterMesAtual();
+            const nomeMes = obterNomeMes(mesAtual);
+            const aniversariantesDoMes = filtrarAniversariantesDoMes();
+
+            // Atualizar título do mês
+            document.getElementById('mes-atual').textContent = `Aniversariantes de ${nomeMes}`;
+
+            const container = document.getElementById('aniversariantes-container');
+
+            if (aniversariantesDoMes.length === 0) {
+                container.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante neste mês. Mas a família cresce a cada dia!</p>';
+            } else {
+                container.innerHTML = aniversariantesDoMes.map(criarCardAniversariante).join('');
+            }
+        }
+
+        // Carregar aniversariantes quando a página carregar
+        document.addEventListener('DOMContentLoaded', exibirAniversariantes);
+    </script>
+
+</body>
+</html>

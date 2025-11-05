@@ -67,8 +67,10 @@
                 <li><a href="historia.html">HISTÓRIA</a></li>
                 <li><a href="rotas.html">PROGRAMAÇÃO E EVENTOS</a></li>
                 <li><a href="irmandade.html">IRMANDADE</a></li>
+                <li><a href="aniversariantes.html">ANIVERSARIANTES</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
                 <li><a href="administracao.html" class="ativo">ADMINISTRAÇÃO</a></li>
+
             </ul>
         </nav>
     </header>
@@ -80,9 +82,16 @@
             
             <input type="password" id="adminPassword" placeholder="Digite a Senha" onkeydown="handleKey(event)">
             
-            <button onclick="checkPassword()">ACESSAR PLANILHA</button>
+            <button onclick="checkPassword()">ACESSAR</button>
+        </div>
+
+        <div id="admin-menu" style="display: none;">
+            <h2>MENU ADMINISTRATIVO</h2>
+            <button onclick="acessarPlanilha()">Acesso à Planilha Financeira</button>
+            <button onclick="incluirAniversariante()">Inclusão de Aniversariante</button>
         </div>
     </main>
+
 
     <footer class="rodape">
         <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
@@ -103,16 +112,26 @@
         // Função principal chamada pelo botão ou pela tecla ENTER
         function checkPassword() {
             const input = document.getElementById('adminPassword').value;
-            
+
             if (input === CORRECT_PASSWORD) {
-                // Senha correta, redireciona para a planilha
-                window.location.href = GOOGLE_SHEET_URL;
+                // Senha correta, mostra o menu administrativo
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('admin-menu').style.display = 'block';
             } else {
                 // Senha incorreta
                 alert("ACESSO NEGADO: Senha de administrador incorreta.");
                 document.getElementById('adminPassword').value = ''; // Limpa o campo
             }
         }
+
+        function acessarPlanilha() {
+            window.location.href = GOOGLE_SHEET_URL;
+        }
+
+        function incluirAniversariante() {
+            alert("Funcionalidade de inclusão de aniversariante em desenvolvimento. Em breve será possível adicionar novos membros.");
+        }
+
     </script>
 
 </body>
