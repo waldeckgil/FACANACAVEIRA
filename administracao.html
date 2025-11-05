@@ -203,7 +203,13 @@
                     <p>Adicione novos membros à lista de aniversariantes do mês.</p>
                     <button>INCLUIR ANIVERSARIANTE</button>
                 </div>
+                <div class="admin-card" onclick="exportarAniversariantes()">
+                    <h3>📤 EXPORTAR ANIVERSARIANTES</h3>
+                    <p>Exporte os aniversariantes atuais (incluindo adicionados) como JSON para atualizar os dados padrão no código.</p>
+                    <button>EXPORTAR</button>
+                </div>
             </div>
+
 
             <div id="form-aniversariante">
                 <h3>Adicionar Aniversariante</h3>
@@ -388,6 +394,26 @@
                 }
             }
         }
+
+        function exportarAniversariantes() {
+            // Carregar aniversariantes do localStorage
+            let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || [];
+
+            // Gerar JSON formatado com comentários
+            const comentarios = `// PASSO A PASSO PARA ATUALIZAR OS DADOS PADRÃO:
+// 1. Copie este código JSON abaixo.
+// 2. Abra o arquivo aniversariantes.html no seu editor (VSCode).
+// 3. Substitua o array 'aniversariantesPadrao' (linha ~95) por este código.
+// 4. Salve o arquivo e faça o push para o GitHub.
+// 5. O Netlify irá reimplantar automaticamente, tornando os novos aniversariantes visíveis para todos os visitantes.
+// const aniversariantesPadrao = `;
+
+            const jsonExport = JSON.stringify(aniversariantes, null, 4);
+
+            // Exibir em um alert (copie e cole)
+            alert(`${comentarios}${jsonExport};`);
+        }
+
 
     </script>
 
