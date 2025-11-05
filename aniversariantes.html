@@ -91,8 +91,8 @@
     </footer>
 
     <script>
-        // Dados dos aniversariantes (serão carregados de um arquivo JSON ou localStorage)
-        const aniversariantes = [
+        // Dados padrão dos aniversariantes
+        const aniversariantesPadrao = [
             { nome: "SELVA", data: "15-01", foto: "MEMBROS/SELVA.jpg", cargo: "PRESIDENTE" },
             { nome: "VALERIA", data: "22-03", foto: "MEMBROS/VALERIA.jpg", cargo: "MEMBRO FUNDADOR" },
             { nome: "WALDECK", data: "10-05", foto: "MEMBROS/WALDECK.jpg", cargo: "MEMBRO PP" },
@@ -103,6 +103,15 @@
             { nome: "HARVRE", data: "19-02", foto: "MEMBROS/Harvre.png", cargo: "MEMBRO" },
             { nome: "[SILAS]", data: "05-04", foto: "MEMBROS/SILAS_VICE_PRESIDENTE.jpg", cargo: "VICE-PRESIDENTE" }
         ];
+
+        // Carregar aniversariantes do localStorage ou usar os padrão
+        let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || aniversariantesPadrao;
+
+        // Se não há dados no localStorage, salvar os padrão
+        if (!localStorage.getItem('aniversariantes')) {
+            localStorage.setItem('aniversariantes', JSON.stringify(aniversariantesPadrao));
+        }
+
 
         // Nomes dos meses em português
         const meses = [

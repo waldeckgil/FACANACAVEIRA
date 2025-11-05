@@ -293,10 +293,24 @@
         const CORRECT_PASSWORD = "adsumus";
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
 
+        // Mapeamento de membros para fotos e cargos
+        const membrosInfo = {
+            "SELVA": { foto: "MEMBROS/SELVA.jpg", cargo: "PRESIDENTE" },
+            "[SILAS]": { foto: "MEMBROS/SILAS_VICE_PRESIDENTE.jpg", cargo: "VICE-PRESIDENTE" },
+            "VALERIA": { foto: "MEMBROS/VALERIA.jpg", cargo: "MEMBRO FUNDADOR" },
+            "Missão": { foto: "MEMBROS/WALDECK.jpg", cargo: "MEMBRO PP" },
+            "CELESTE": { foto: "MEMBROS/CELESTE.png", cargo: "MEMBRO" },
+            "AMARO": { foto: "MEMBROS/AMARO.png", cargo: "MEMBRO" },
+            "Kleber": { foto: "MEMBROS/Kleber.png", cargo: "MEMBRO" },
+            "Nandos": { foto: "MEMBROS/Nando.png", cargo: "MEMBRO PP" },
+            "[Harvre]": { foto: "MEMBROS/Harvre.png", cargo: "MEMBRO" },
+            "[NICKNAME 2]": { foto: "MEMBROS/membro_placeholder.jpg", cargo: "MEMBRO" }
+        };
+
         // Função para verificar se a tecla pressionada é ENTER (desktop)
         function handleKey(event) {
             // Código da tecla 13 é o ENTER
-            if (event.keyCode === 13) { 
+            if (event.keyCode === 13) {
                 checkPassword();
             }
         }
@@ -334,23 +348,49 @@
 
             if (nome && dia && mes) {
                 const data = `${dia}-${mes}`;
+                const info = membrosInfo[nome];
 
-                // Aqui você pode adicionar lógica para salvar no servidor ou localStorage
-                alert(`Aniversariante adicionado:\nNome: ${nome}\nData: ${data}\n\nNota: Esta funcionalidade está em desenvolvimento. Os dados serão salvos permanentemente em breve.`);
+                if (info) {
+                    // Carregar aniversariantes existentes do localStorage
+                    let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || [];
 
-                // Limpar formulário
-                document.getElementById('nome-membro').value = '';
-                document.getElementById('dia-aniversario').value = '';
-                document.getElementById('mes-aniversario').value = '';
+                    // Verificar se o membro já está cadastrado
+                    const existente = aniversariantes.find(a => a.nome === nome);
+                    if (existente) {
+                        alert(`O membro ${nome} já está cadastrado com a data ${existente.data}.`);
+                        return;
+                    }
 
-                // Esconder formulário
-                document.getElementById('form-aniversariante').style.display = 'none';
+                    // Adicionar novo aniversariante
+                    const novoAniversariante = {
+                        nome: nome,
+                        data: data,
+                        foto: info.foto,
+                        cargo: info.cargo
+                    };
+
+                    aniversariantes.push(novoAniversariante);
+
+                    // Salvar no localStorage
+                    localStorage.setItem('aniversariantes', JSON.stringify(aniversariantes));
+
+                    alert(`Aniversariante adicionado com sucesso!\nNome: ${nome}\nData: ${data}\n\nO aniversariante agora aparecerá na aba "ANIVERSARIANTES".`);
+
+                    // Limpar formulário
+                    document.getElementById('nome-membro').value = '';
+                    document.getElementById('dia-aniversario').value = '';
+                    document.getElementById('mes-aniversario').value = '';
+
+                    // Esconder formulário
+                    document.getElementById('form-aniversariante').style.display = 'none';
+                } else {
+                    alert("Erro: Informações do membro não encontradas.");
+                }
             }
         }
 
-
-
     </script>
+
 
 </body>
 </html>
