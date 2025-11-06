@@ -155,6 +155,90 @@
             color: var(--cor-preto);
         }
 
+        /* Estilos para o modal de exportação */
+        #export-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #export-modal .modal-content {
+            background-color: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--cor-vermelho);
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            color: var(--cor-branco);
+        }
+        #export-modal h3 {
+            color: var(--cor-amarelo);
+            margin-bottom: 20px;
+            font-family: var(--fonte-titulo);
+            text-align: center;
+        }
+        #export-modal textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #222;
+            color: var(--cor-branco);
+            font-family: monospace;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+        #export-modal .instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        #export-modal .instructions h4 {
+            color: var(--cor-amarelo);
+            margin-bottom: 10px;
+            font-family: var(--fonte-titulo);
+        }
+        #export-modal .instructions ol {
+            color: var(--cor-branco);
+            padding-left: 20px;
+        }
+        #export-modal .instructions li {
+            margin-bottom: 8px;
+        }
+        #export-modal .instructions code {
+            background-color: #333;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-family: monospace;
+        }
+        #export-modal button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: var(--fonte-titulo);
+            transition: background-color 0.3s;
+        }
+        #export-modal button:hover {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-preto);
+        }
+
+
     </style>
 </head>
 <body>
@@ -399,20 +483,53 @@
             // Carregar aniversariantes do localStorage
             let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || [];
 
-            // Gerar JSON formatado com comentários
-            const comentarios = `// PASSO A PASSO PARA ATUALIZAR OS DADOS PADRÃO:
-// 1. Copie este código JSON abaixo.
-// 2. Abra o arquivo aniversariantes.html no seu editor (VSCode).
-// 3. Substitua o array 'aniversariantesPadrao' (linha ~95) por este código.
-// 4. Salve o arquivo e faça o push para o GitHub.
-// 5. O Netlify irá reimplantar automaticamente, tornando os novos aniversariantes visíveis para todos os visitantes.
-// const aniversariantesPadrao = `;
-
+            // Gerar JSON formatado
             const jsonExport = JSON.stringify(aniversariantes, null, 4);
 
-            // Exibir em um alert (copie e cole)
-            alert(`${comentarios}${jsonExport};`);
+            // Criar modal
+            const modal = document.createElement('div');
+            modal.id = 'export-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>EXPORTAR ANIVERSARIANTES</h3>
+                    <p>Copie o código JSON abaixo e siga as instruções para atualizar os dados padrão no site.</p>
+                    <textarea readonly>${jsonExport}</textarea>
+                    <div class="instructions">
+                        <h4>Instruções para Atualizar no GitHub:</h4>
+                        <ol>
+                            <li>Cole o código JSON acima no arquivo <code>aniversariantes.html</code>, substituindo todo o array <code>aniversariantesPadrao</code> (cerca de linha 95).</li>
+                            <li>Salve o arquivo <code>aniversariantes.html</code>.</li>
+                            <li>Abra o terminal ou PowerShell no diretório: <code>C:\\WALDECK_IA\\FACA_NACAVEIRA</code></li>
+                            <li>Execute os comandos Git:
+                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" add .</code>
+                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" commit -m "Atualização de aniversariantes"</code>
+                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" push origin main</code>
+                            </li>
+                            <li>O Netlify irá reimplantar automaticamente, tornando os novos aniversariantes visíveis para todos os visitantes.</li>
+                        </ol>
+                    </div>
+                    <button onclick="fecharModal()">FECHAR</button>
+                </div>
+            `;
+
+            // Adicionar modal ao body
+            document.body.appendChild(modal);
+
+            // Focar no textarea para facilitar seleção
+            setTimeout(() => {
+                const textarea = modal.querySelector('textarea');
+                textarea.focus();
+                textarea.select();
+            }, 100);
         }
+
+        function fecharModal() {
+            const modal = document.getElementById('export-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
 
 
     </script>
