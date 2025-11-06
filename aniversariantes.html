@@ -50,6 +50,12 @@
             color: var(--cor-vermelho);
             font-size: 1.1em;
         }
+        .idade {
+            color: var(--cor-amarelo);
+            font-weight: bold;
+            font-size: 1em;
+            margin: 4px 0;
+        }
         .sem-aniversariantes {
             text-align: center;
             color: var(--cor-branco);
@@ -65,8 +71,6 @@
             font-family: var(--fonte-titulo);
         }
     </style>
-
-
 </head>
 <body>
 
@@ -100,8 +104,6 @@
         </div>
     </main>
 
-
-
     <footer class="rodape">
         <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
     </footer>
@@ -113,57 +115,61 @@
         "nome": "SELVA",
         "data": "15-01",
         "foto": "MEMBROS/SELVA.jpg",
-        "cargo": "PRESIDENTE"
+        "cargo": "PRESIDENTE",
+        "anoNascimento": ""
     },
     
     {
         "nome": "FACA NA CAVEIRA - MG ",
         "data": "27-10",
         "foto": "MEMBROS/FACA.jpg",
-        "cargo": "MEMBRO"
+        "cargo": "MEMBRO",
+        "anoNascimento": ""
     },
 
      {
         "nome": "CELESTE",
         "data": "08-12",
         "foto": "MEMBROS/CELESTE.png",
-        "cargo": "MEMBRO"
+        "cargo": "MEMBRO",
+        "anoNascimento": ""
     },
-
-
-
-
 
     {
         "nome": "AMARO",
         "data": "14-09",
         "foto": "MEMBROS/AMARO.png",
-        "cargo": "MEMBRO"
+        "cargo": "MEMBRO",
+        "anoNascimento": ""
     },
     {
         "nome": "KLEBER",
         "data": "04-11",
         "foto": "MEMBROS/kleber.png",
-        "cargo": "MEMBRO"
+        "cargo": "MEMBRO",
+        "anoNascimento": 1964
     },
     {
         "nome": "NANDO",
         "data": "27-12",
         "foto": "MEMBROS/Nando.png",
-        "cargo": "MEMBRO ASPIRANTE"
+        "cargo": "MEMBRO ASPIRANTE",
+        "anoNascimento": ""
     },
     {
         "nome": "HARVRE",
         "data": "19-11",
         "foto": "MEMBROS/Harvre.png",
-        "cargo": "MEMBRO"
+        "cargo": "MEMBRO",
+        "anoNascimento": ""
     },
 
     {
         "nome": "MISSÃO",
         "data": "04-04",
         "foto": "MEMBROS/WALDECK.jpg",
-        "cargo": "MEMBRO ASPIRANTE"
+        "cargo": "MEMBRO ASPIRANTE",
+        "anoNascimento": ""
     }
 
         ];
@@ -181,8 +187,6 @@
 
         // Salvar a lista mesclada no localStorage
         localStorage.setItem('aniversariantes', JSON.stringify(aniversariantes));
-
-
 
         // Nomes dos meses em português
         const meses = [
@@ -209,16 +213,19 @@
 
         function criarCardAniversariante(aniversariante) {
             const [dia, mes] = aniversariante.data.split('-');
+            const currentYear = new Date().getFullYear();
+            const age = aniversariante.anoNascimento && aniversariante.anoNascimento !== "" ? currentYear - aniversariante.anoNascimento : null;
+            const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
             return `
                 <div class="aniversariante-card">
                     <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/FACA.jpg'">
                     <h3>${aniversariante.nome}</h3>
                     <p>${aniversariante.cargo}</p>
+                    ${ageDisplay}
                     <p class="data-aniversario">${dia}/${mes}</p>
                 </div>
             `;
         }
-
 
         function ordenarPorData(aniversariantes) {
             return aniversariantes.sort((a, b) => {
@@ -248,8 +255,6 @@
                 container.innerHTML = aniversariantesDoMes.map(criarCardAniversariante).join('');
             }
         }
-
-
 
         // Carregar aniversariantes quando a página carregar
         document.addEventListener('DOMContentLoaded', exibirAniversariantes);
