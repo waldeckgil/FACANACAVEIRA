@@ -26,6 +26,27 @@
             transform: scale(1.05);
             box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
         }
+        .aniversariantes-grid-proximo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            opacity: 0.7;
+        }
+        .aniversariante-card-proximo {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #666;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .aniversariante-card-proximo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
         .aniversariante-card img {
             width: 120px;
             height: 120px;
@@ -102,7 +123,14 @@
         <div class="aniversariantes-grid" id="aniversariantes-container">
             <!-- Aniversariantes serão carregados aqui via JavaScript -->
         </div>
+
+        <h3 style="color: var(--cor-amarelo); text-align: center; margin-top: 50px;">Próximos Aniversariantes</h3>
+        <div id="mes-proximo" class="mes-atual" style="font-size: 1.2em;"></div>
+        <div class="aniversariantes-grid-proximo" id="aniversariantes-proximo-container">
+            <!-- Próximos aniversariantes serão carregados aqui via JavaScript -->
+        </div>
     </main>
+
 
     <footer class="rodape">
         <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
@@ -199,25 +227,30 @@
             return dataAtual.getMonth() + 1; // getMonth() retorna 0-11, então +1
         }
 
+        function obterMesProximo() {
+            return (obterMesAtual() % 12) + 1;
+        }
+
         function obterNomeMes(mes) {
             return meses[mes - 1];
         }
 
-        function filtrarAniversariantesDoMes() {
-            const mesAtual = obterMesAtual();
+        function filtrarAniversariantesDoMes(mes) {
             return aniversariantes.filter(aniversariante => {
                 const mesAniversario = parseInt(aniversariante.data.split('-')[1]);
-                return mesAniversario === mesAtual;
+                return mesAniversario === mes;
             });
         }
 
-        function criarCardAniversariante(aniversariante) {
+
+        function criarCardAniversariante(aniversariante, isProximo = false) {
             const [dia, mes] = aniversariante.data.split('-');
             const currentYear = new Date().getFullYear();
             const age = aniversariante.anoNascimento && aniversariante.anoNascimento !== "" ? currentYear - aniversariante.anoNascimento : null;
             const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
+            const cardClass = isProximo ? 'aniversariante-card-proximo' : 'aniversariante-card';
             return `
-                <div class="aniversariante-card">
+                <div class="${cardClass}">
                     <img src="${aniversariante.foto}" alt="Foto de ${aniversariante.nome}" onerror="this.src='MEMBROS/FACA.jpg'">
                     <h3>${aniversariante.nome}</h3>
                     <p>${aniversariante.cargo}</p>
@@ -226,6 +259,7 @@
                 </div>
             `;
         }
+
 
         function ordenarPorData(aniversariantes) {
             return aniversariantes.sort((a, b) => {
@@ -238,23 +272,39 @@
 
         function exibirAniversariantes() {
             const mesAtual = obterMesAtual();
-            const nomeMes = obterNomeMes(mesAtual);
-            let aniversariantesDoMes = filtrarAniversariantesDoMes();
+            const mesProximo = obterMesProximo();
+            const nomeMesAtual = obterNomeMes(mesAtual);
+            const nomeMesProximo = obterNomeMes(mesProximo);
 
-            // Ordenar por data crescente
+            // Aniversariantes do mês atual
+            let aniversariantesDoMes = filtrarAniversariantesDoMes(mesAtual);
             aniversariantesDoMes = ordenarPorData(aniversariantesDoMes);
 
-            // Atualizar título do mês
-            document.getElementById('mes-atual').textContent = `Aniversariantes de ${nomeMes}`;
+            // Atualizar título do mês atual
+            document.getElementById('mes-atual').textContent = `Aniversariantes de ${nomeMesAtual}`;
 
-            const container = document.getElementById('aniversariantes-container');
-
+            const containerAtual = document.getElementById('aniversariantes-container');
             if (aniversariantesDoMes.length === 0) {
-                container.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante neste mês. Mas a família cresce a cada dia!</p>';
+                containerAtual.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante neste mês. Mas a família cresce a cada dia!</p>';
             } else {
-                container.innerHTML = aniversariantesDoMes.map(criarCardAniversariante).join('');
+                containerAtual.innerHTML = aniversariantesDoMes.map(aniversariante => criarCardAniversariante(aniversariante, false)).join('');
+            }
+
+            // Aniversariantes do mês próximo
+            let aniversariantesProximo = filtrarAniversariantesDoMes(mesProximo);
+            aniversariantesProximo = ordenarPorData(aniversariantesProximo);
+
+            // Atualizar título do mês próximo
+            document.getElementById('mes-proximo').textContent = `Próximos de ${nomeMesProximo}`;
+
+            const containerProximo = document.getElementById('aniversariantes-proximo-container');
+            if (aniversariantesProximo.length === 0) {
+                containerProximo.innerHTML = '<p class="sem-aniversariantes">Nenhum aniversariante no próximo mês.</p>';
+            } else {
+                containerProximo.innerHTML = aniversariantesProximo.map(aniversariante => criarCardAniversariante(aniversariante, true)).join('');
             }
         }
+
 
         // Carregar aniversariantes quando a página carregar
         document.addEventListener('DOMContentLoaded', exibirAniversariantes);
