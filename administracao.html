@@ -107,53 +107,6 @@
             color: var(--cor-preto);
         }
 
-        /* Estilos para o formulário de inclusão */
-        #form-aniversariante {
-            display: none;
-            max-width: 500px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 2px solid var(--cor-vermelho);
-            border-radius: 8px;
-        }
-        #form-aniversariante h3 {
-            color: var(--cor-amarelo);
-            margin-bottom: 20px;
-            font-family: var(--fonte-titulo);
-        }
-        #form-aniversariante label {
-            display: block;
-            color: var(--cor-branco);
-            margin-bottom: 5px;
-            text-align: left;
-        }
-        #form-aniversariante select,
-        #form-aniversariante input[type="date"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #333;
-            border-radius: 4px;
-            background-color: #222;
-            color: var(--cor-branco);
-            font-size: 1em;
-        }
-        #form-aniversariante button {
-            padding: 12px 24px;
-            background-color: var(--cor-vermelho);
-            color: var(--cor-branco);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-family: var(--fonte-titulo);
-            transition: background-color 0.3s;
-        }
-        #form-aniversariante button:hover {
-            background-color: var(--cor-amarelo);
-            color: var(--cor-preto);
-        }
 
         /* Estilos para o modal de exportação */
         #export-modal {
@@ -282,11 +235,6 @@
                     <p>Acesse a planilha financeira do grupo para visualizar e editar dados administrativos.</p>
                     <button>ACESSAR PLANILHA</button>
                 </div>
-                <div class="admin-card" onclick="mostrarFormAniversariante()">
-                    <h3>🎂 ANIVERSARIANTES</h3>
-                    <p>Adicione novos membros à lista de aniversariantes do mês.</p>
-                    <button>INCLUIR ANIVERSARIANTE</button>
-                </div>
                 <div class="admin-card" onclick="exportarAniversariantes()">
                     <h3>📤 EXPORTAR ANIVERSARIANTES</h3>
                     <p>Exporte os aniversariantes atuais (incluindo adicionados) como JSON para atualizar os dados padrão no código.</p>
@@ -294,82 +242,6 @@
                 </div>
             </div>
 
-
-            <div id="form-aniversariante">
-                <h3>Adicionar Aniversariante</h3>
-                <form onsubmit="adicionarAniversariante(event)">
-                    <label for="nome-membro">Nome do Membro:</label>
-                    <select id="nome-membro" required>
-                        <option value="">Selecione um membro...</option>
-                        <option value="SELVA">SELVA</option>
-                        <option value="SILAS">SILAS</option>
-                        <option value="VALERIA">VALERIA</option>
-                        <option value="MISSÃO">MISSÃO (WALDECK)</option>
-                        <option value="CELESTE">CELESTE</option>
-                        <option value="AMARO">AMARO</option>
-                        <option value="KLEBER">KLEBER</option>
-                        <option value="NANDOS">NANDOS</option>
-                        <option value="HARVRE">HARVRE</option>
-                       
-                    </select>
-
-                    <label for="dia-aniversario">Dia do Aniversário:</label>
-                    <select id="dia-aniversario" required>
-                        <option value="">Selecione o dia...</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                    </select>
-
-                    <label for="mes-aniversario">Mês do Aniversário:</label>
-                    <select id="mes-aniversario" required>
-                        <option value="">Selecione o mês...</option>
-                        <option value="01">Janeiro</option>
-                        <option value="02">Fevereiro</option>
-                        <option value="03">Março</option>
-                        <option value="04">Abril</option>
-                        <option value="05">Maio</option>
-                        <option value="06">Junho</option>
-                        <option value="07">Julho</option>
-                        <option value="08">Agosto</option>
-                        <option value="09">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                    </select>
-
-
-                    <button type="submit">ADICIONAR</button>
-                </form>
-            </div>
         </div>
 
     </main>
@@ -431,18 +303,8 @@
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
 
 
-        // Mapeamento de membros para fotos e cargos
-        const membrosInfo = {
-            "SELVA": { foto: "MEMBROS/SELVA.jpg", cargo: "PRESIDENTE" },
-            "SILAS": { foto: "MEMBROS/SILAS_VICE_PRESIDENTE.jpg", cargo: "VICE-PRESIDENTE" },
-            "VALERIA": { foto: "MEMBROS/VALERIA.jpg", cargo: "MEMBRO FUNDADOR" },
-            "MISSÃO": { foto: "MEMBROS/WALDECK.jpg", cargo: "MEMBRO ASPIRANTE" },
-            "CELESTE": { foto: "MEMBROS/CELESTE.png", cargo: "MEMBRO" },
-            "AMARO": { foto: "MEMBROS/AMARO.png", cargo: "MEMBRO" },
-            "KLEBER": { foto: "MEMBROS/kleber.png", cargo: "MEMBRO" },
-            "NANDOS": { foto: "MEMBROS/Nando.png", cargo: "MEMBRO ASPIRANTE" },
-            "HARVRE": { foto: "MEMBROS/Harvre.png", cargo: "MEMBRO" }
-        };
+
+
 
 
         // Função para verificar se a tecla pressionada é ENTER (desktop)
@@ -472,69 +334,8 @@
             window.location.href = GOOGLE_SHEET_URL;
         }
 
-        function mostrarFormAniversariante() {
-            const form = document.getElementById('form-aniversariante');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function adicionarAniversariante(event) {
-            event.preventDefault();
-
-            const nome = document.getElementById('nome-membro').value;
-            const dia = document.getElementById('dia-aniversario').value;
-            const mes = document.getElementById('mes-aniversario').value;
-
-            if (nome && dia && mes) {
-                const data = `${dia}-${mes}`;
-                const info = membrosInfo[nome];
-
-                if (info) {
-                    // Sempre começar com os aniversariantes padrão
-                    let aniversariantes = [...aniversariantesPadrao];
-
-                    // Carregar adições do localStorage e mesclar, evitando duplicatas
-                    let additions = JSON.parse(localStorage.getItem('aniversariantes')) || [];
-                    for (let add of additions) {
-                        if (!aniversariantes.find(a => a.nome === add.nome)) {
-                            aniversariantes.push(add);
-                        }
-                    }
-
-                    // Verificar se o membro já está cadastrado
-                    const existente = aniversariantes.find(a => a.nome === nome);
-                    if (existente) {
-                        alert(`O membro ${nome} já está cadastrado com a data ${existente.data}.`);
-                        return;
-                    }
-
-                    // Adicionar novo aniversariante
-                    const novoAniversariante = {
-                        nome: nome,
-                        data: data,
-                        foto: info.foto,
-                        cargo: info.cargo
-                    };
-
-                    aniversariantes.push(novoAniversariante);
-
-                    // Salvar no localStorage (apenas as adições, para manter consistência)
-                    localStorage.setItem('aniversariantes', JSON.stringify(aniversariantes.filter(a => !aniversariantesPadrao.find(p => p.nome === a.nome))));
 
 
-                    alert(`Aniversariante adicionado com sucesso!\nNome: ${nome}\nData: ${data}\n\nO aniversariante agora aparecerá na aba "ANIVERSARIANTES".`);
-
-                    // Limpar formulário
-                    document.getElementById('nome-membro').value = '';
-                    document.getElementById('dia-aniversario').value = '';
-                    document.getElementById('mes-aniversario').value = '';
-
-                    // Esconder formulário
-                    document.getElementById('form-aniversariante').style.display = 'none';
-                } else {
-                    alert("Erro: Informações do membro não encontradas.");
-                }
-            }
-        }
 
         function exportarAniversariantes() {
             // Sempre começar com os aniversariantes padrão
