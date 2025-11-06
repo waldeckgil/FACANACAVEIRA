@@ -142,7 +142,7 @@
     },
     {
         "nome": "NANDO",
-        "data": "27-12",
+        "data": "27-11",
         "foto": "MEMBROS/Nando.png",
         "cargo": "MEMBRO ASPIRANTE"
     },
@@ -162,13 +162,20 @@
 
         ];
 
-        // Carregar aniversariantes do localStorage ou usar os padrão
-        let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || aniversariantesPadrao;
+        // Sempre começar com os aniversariantes padrão
+        let aniversariantes = [...aniversariantesPadrao];
 
-        // Se não há dados no localStorage, salvar os padrão
-        if (!localStorage.getItem('aniversariantes')) {
-            localStorage.setItem('aniversariantes', JSON.stringify(aniversariantesPadrao));
+        // Carregar adições do localStorage e mesclar, evitando duplicatas
+        let additions = JSON.parse(localStorage.getItem('aniversariantes')) || [];
+        for (let add of additions) {
+            if (!aniversariantes.find(a => a.nome === add.nome)) {
+                aniversariantes.push(add);
+            }
         }
+
+        // Salvar a lista mesclada no localStorage
+        localStorage.setItem('aniversariantes', JSON.stringify(aniversariantes));
+
 
 
         // Nomes dos meses em português
