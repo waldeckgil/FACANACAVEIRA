@@ -388,12 +388,7 @@
                 "foto": "MEMBROS/SELVA.jpg",
                 "cargo": "PRESIDENTE"
             },
-            {
-                "nome": "VALERIA",
-                "data": "22-03",
-                "foto": "MEMBROS/VALERIA.jpg",
-                "cargo": "MEMBRO FUNDADOR"
-            },
+
             {
                 "nome": "CELESTE",
                 "data": "08-07",
@@ -542,11 +537,20 @@
         }
 
         function exportarAniversariantes() {
-            // Carregar aniversariantes do localStorage
-            let aniversariantes = JSON.parse(localStorage.getItem('aniversariantes')) || [];
+            // Sempre começar com os aniversariantes padrão
+            let aniversariantes = [...aniversariantesPadrao];
+
+            // Carregar adições do localStorage e mesclar, evitando duplicatas
+            let additions = JSON.parse(localStorage.getItem('aniversariantes')) || [];
+            for (let add of additions) {
+                if (!aniversariantes.find(a => a.nome === add.nome)) {
+                    aniversariantes.push(add);
+                }
+            }
 
             // Gerar JSON formatado
             const jsonExport = JSON.stringify(aniversariantes, null, 4);
+
 
             // Criar modal
             const modal = document.createElement('div');
