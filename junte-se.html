@@ -96,7 +96,7 @@
 
         <div class="formulario-container">
             <h2>Candidatar-se ao Motoclube</h2>
-            <form name="candidatura" method="POST" data-netlify="true">
+            <form name="candidatura" method="POST" data-netlify="true" action="/junte-se.html?sucesso=true">
                 <input type="hidden" name="form-name" value="candidatura">
                 <label for="nome">Nome Completo:</label>
                 <input type="text" id="nome" name="nome" required>
@@ -124,14 +124,15 @@
     </footer>
 
     <script>
-        // Opcional: Mostrar mensagem de sucesso após envio (Formspree redireciona, mas podemos usar JS se necessário)
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            // Formspree cuida do envio, mas podemos adicionar feedback
-            setTimeout(() => {
-                document.getElementById('sucesso').style.display = 'block';
-            }, 1000);
-        });
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('sucesso')) {
+            document.getElementById('sucesso').style.display = 'block';
+            
+            // Opcional: Limpa o URL para remover o "?sucesso=true"
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.pathname);
+            }
+        }
     </script>
 
 </body>
