@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junte-se a Nós | FACA NA CAVEIRA MG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        .formulario-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--cor-vermelho);
+            border-radius: 12px;
+            color: var(--cor-branco);
+        }
+        .formulario-container h2 {
+            color: var(--cor-amarelo);
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: var(--fonte-titulo);
+        }
+        .formulario-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--cor-branco);
+            font-weight: bold;
+        }
+        .formulario-container input,
+        .formulario-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #222;
+            color: var(--cor-branco);
+            font-size: 1em;
+        }
+        .formulario-container textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .formulario-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-family: var(--fonte-titulo);
+            transition: background-color 0.3s;
+        }
+        .formulario-container button:hover {
+            background-color: var(--cor-amarelo);
+            color: var(--cor-preto);
+        }
+        .mensagem-sucesso {
+            display: none;
+            text-align: center;
+            color: var(--cor-amarelo);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <a href="index.html"><img src="FACA.jpg" alt="Logo Motogrupo Faca na Caveira MG RJ-BRASIL" class="logo"></a>
+        </div>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="galeria.html">GALERIA</a></li>
+                <li><a href="historia.html">HISTÓRIA</a></li>
+                <li><a href="rotas.html">PROGRAMAÇÃO E EVENTOS</a></li>
+                <li><a href="irmandade.html">IRMANDADE</a></li>
+                <li><a href="aniversariantes.html">ANIVERSARIANTES</a></li>
+                <li><a href="junte-se.html" class="ativo">JUNTE-SE A NÓS</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="administracao.html">ADMINISTRAÇÃO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="secao-padrao">
+        <div class="container-texto">
+            <h2>JUNTE-SE A NÓS</h2>
+            <p>Interessado em fazer parte da família FACA NA CAVEIRA MG? Preencha o formulário abaixo e entraremos em contato!</p>
+        </div>
+
+        <div class="formulario-container">
+            <h2>Candidatar-se ao Motoclube</h2>
+            <form action="https://formspree.io/f/xpznqjqy" method="POST">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+
+                <label for="mensagem">Mensagem (opcional):</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Conte-nos um pouco sobre você..."></textarea>
+
+                <button type="submit">ENVIAR CANDIDATURA</button>
+            </form>
+            <div class="mensagem-sucesso" id="sucesso">
+                Obrigado! Sua candidatura foi enviada com sucesso. Entraremos em contato em breve.
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
+    </footer>
+
+    <script>
+        // Opcional: Mostrar mensagem de sucesso após envio (Formspree redireciona, mas podemos usar JS se necessário)
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            // Formspree cuida do envio, mas podemos adicionar feedback
+            setTimeout(() => {
+                document.getElementById('sucesso').style.display = 'block';
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
