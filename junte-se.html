@@ -21,7 +21,16 @@
             text-align: center;
             margin-bottom: 20px;
             font-family: var(--fonte-titulo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        .formulario-container h2 img {
+            width: 80px;
+            height: auto;
+            margin-left: 20px;
+        }
+
         .formulario-container label {
             display: block;
             margin-bottom: 5px;
@@ -95,7 +104,8 @@
         </div>
 
         <div class="formulario-container">
-            <h2>Candidatar-se ao Motoclube</h2>
+            <h2>Candidatar-se ao Motoclube <img src="FACA.jpg" alt="Logo Faca na Caveira"></h2>
+
             <form name="candidatura" method="POST" data-netlify="true" action="/junte-se.html?sucesso=true">
                 <input type="hidden" name="form-name" value="candidatura">
                 <label for="nome">Nome Completo:</label>
