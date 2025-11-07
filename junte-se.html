@@ -96,7 +96,8 @@
 
         <div class="formulario-container">
             <h2>Candidatar-se ao Motoclube</h2>
-            <form action="https://formspree.io/f/xpznqjqy" method="POST">
+            <form name="candidatura" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="candidatura">
                 <label for="nome">Nome Completo:</label>
                 <input type="text" id="nome" name="nome" required>
 
@@ -111,6 +112,7 @@
 
                 <button type="submit">ENVIAR CANDIDATURA</button>
             </form>
+
             <div class="mensagem-sucesso" id="sucesso">
                 Obrigado! Sua candidatura foi enviada com sucesso. Entraremos em contato em breve.
             </div>
