@@ -115,7 +115,7 @@
     <main class="secao-home">
         <div class="container-texto">
             <h2>DATAS COMEMORATIVAS</h2>
-            <p>Celebre conosco essas datas especiais da nossa irmandade e da comunidade motociclística!</p>
+            <p>                               </p>
         </div>
 
         <div class="datas-grid" id="datas-container">
@@ -161,6 +161,28 @@
             }
         ];
 
+        // Nomes dos meses em português
+        const meses = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        function obterMesAtual() {
+            const dataAtual = new Date();
+            return dataAtual.getMonth() + 1; // getMonth() retorna 0-11, então +1
+        }
+
+        function obterNomeMes(mes) {
+            return meses[mes - 1];
+        }
+
+        function filtrarDatasDoMes(mes) {
+            return datasComemorativas.filter(data => {
+                const mesData = parseInt(data.data.split('-')[1]);
+                return mesData === mes;
+            });
+        }
+
         function criarCardData(data) {
             const [dia, mes] = data.data.split('-');
             const currentYear = new Date().getFullYear();
@@ -178,13 +200,27 @@
         }
 
         function exibirDatasComemorativas() {
+            const mesAtual = obterMesAtual();
+            const nomeMesAtual = obterNomeMes(mesAtual);
+
+            // Filtrar datas do mês atual
+            const datasDoMes = filtrarDatasDoMes(mesAtual);
+
+            // Atualizar título
+            document.querySelector('.container-texto h2').textContent = `DATAS COMEMORATIVAS DE ${nomeMesAtual.toUpperCase()}`;
+
             const container = document.getElementById('datas-container');
-            container.innerHTML = datasComemorativas.map(data => criarCardData(data)).join('');
+            if (datasDoMes.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--cor-branco); font-size: 1.2em; margin: 50px 0; grid-column: 1 / -1;">Nenhuma data comemorativa neste mês. Mas a estrada nos reserva muitas surpresas!</p>';
+            } else {
+                container.innerHTML = datasDoMes.map(data => criarCardData(data)).join('');
+            }
         }
 
         // Carregar datas comemorativas quando a página carregar
         document.addEventListener('DOMContentLoaded', exibirDatasComemorativas);
     </script>
+
 
 </body>
 </html>
