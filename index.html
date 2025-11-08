@@ -33,11 +33,78 @@
     </header>
 
     <main class="secao-home">
-        </main>
+        <div class="container-texto">
+            <h2>DATAS COMEMORATIVAS</h2>
+            <p>Celebre conosco essas datas especiais da nossa irmandade e da comunidade motociclística!</p>
+        </div>
+
+        <div class="datas-grid" id="datas-container">
+            <!-- Datas comemorativas serão carregadas aqui via JavaScript -->
+        </div>
+    </main>
+
 
     <footer class="rodape">
         <p>&copy; 2025 FACA NA CAVEIRA MG. RJ-BRASIL.</p>
     </footer>
+
+    <script>
+        // Dados das datas comemorativas (apenas aquelas com foto em DATAS_COMEMORATIVAS_EVENTOS/)
+        const datasComemorativas = [
+            {
+                "nome": "FACA NA CAVEIRA - MG",
+                "data": "27-10",
+                "foto": "DATAS_COMEMORATIVAS_EVENTOS/FACA.jpg",
+                "cargo": "Aniversário do Motogrupo",
+                "anoNascimento": 2013
+            },
+            {
+                "nome": "DIA 27 DE JULHO DIA DO MOTOCICLISTA",
+                "data": "27-07",
+                "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_MOTOCICICLSITA.jpg",
+                "cargo": "",
+                "anoNascimento": ""
+            },
+            {
+                "nome": "DIA 13 DE JULHO DIA MUNDIAL DO ROCK",
+                "data": "13-07",
+                "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_ROCK",
+                "cargo": "",
+                "anoNascimento": ""
+            },
+            {
+                "nome": "CONSCIENCIA NEGRA",
+                "data": "20-11",
+                "foto": "DATAS_COMEMORATIVAS_EVENTOS/CONSCIENCIA_NEGRA.png",
+                "cargo": "",
+                "anoNascimento": ""
+            }
+        ];
+
+        function criarCardData(data) {
+            const [dia, mes] = data.data.split('-');
+            const currentYear = new Date().getFullYear();
+            const age = data.anoNascimento && data.anoNascimento !== "" ? currentYear - data.anoNascimento : null;
+            const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
+            return `
+                <div class="data-card">
+                    <img src="${data.foto}" alt="Foto de ${data.nome}" onerror="this.src='MEMBROS/FACA.jpg'">
+                    <h3>${data.nome}</h3>
+                    <p>${data.cargo}</p>
+                    ${ageDisplay}
+                    <p class="data-aniversario">${dia}/${mes}</p>
+                </div>
+            `;
+        }
+
+        function exibirDatasComemorativas() {
+            const container = document.getElementById('datas-container');
+            container.innerHTML = datasComemorativas.map(data => criarCardData(data)).join('');
+        }
+
+        // Carregar datas comemorativas quando a página carregar
+        document.addEventListener('DOMContentLoaded', exibirDatasComemorativas);
+    </script>
 
 </body>
 </html>
