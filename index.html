@@ -113,15 +113,13 @@
     </header>
 
     <main class="secao-home">
-        <div class="container-texto">
-            <h2>DATAS COMEMORATIVAS</h2>
-        </div>
-
+        <h2>DATAS COMEMORATIVAS</h2>
 
         <div class="datas-grid" id="datas-container">
             <!-- Datas comemorativas serão carregadas aqui via JavaScript -->
         </div>
     </main>
+
 
 
     <footer class="rodape">
@@ -207,7 +205,8 @@
             const datasDoMes = filtrarDatasDoMes(mesAtual);
 
             // Atualizar título
-            document.querySelector('.container-texto h2').textContent = `DATAS COMEMORATIVAS DE ${nomeMesAtual.toUpperCase()}`;
+            document.querySelector('.secao-home h2').textContent = `DATAS COMEMORATIVAS DE ${nomeMesAtual.toUpperCase()}`;
+
 
             const container = document.getElementById('datas-container');
             if (datasDoMes.length === 0) {
