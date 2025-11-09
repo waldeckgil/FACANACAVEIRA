@@ -237,11 +237,8 @@
                     <p>Acesse a planilha financeira do grupo para visualizar e editar dados administrativos.</p>
                     <button>ACESSAR PLANILHA</button>
                 </div>
-                <div class="admin-card" onclick="exportarAniversariantes()">
-                    <h3>📤 EXPORTAR ANIVERSARIANTES</h3>
-                    <p>Exporte os aniversariantes atuais (incluindo adicionados) como JSON para atualizar os dados padrão no código.</p>
-                    <button>EXPORTAR</button>
-                </div>
+
+
             </div>
 
         </div>
@@ -336,68 +333,16 @@
             window.location.href = GOOGLE_SHEET_URL;
         }
 
-
-
-
-        function exportarAniversariantes() {
-            // Sempre começar com os aniversariantes padrão
-            let aniversariantes = [...aniversariantesPadrao];
-
-            // Carregar adições do localStorage e mesclar, evitando duplicatas
-            let additions = JSON.parse(localStorage.getItem('aniversariantes')) || [];
-            for (let add of additions) {
-                if (!aniversariantes.find(a => a.nome === add.nome)) {
-                    aniversariantes.push(add);
-                }
-            }
-
-            // Gerar JSON formatado
-            const jsonExport = JSON.stringify(aniversariantes, null, 4);
-
-
-            // Criar modal
-            const modal = document.createElement('div');
-            modal.id = 'export-modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <h3>EXPORTAR ANIVERSARIANTES</h3>
-                    <p>Copie o código JSON abaixo e siga as instruções para atualizar os dados padrão no site.</p>
-                    <textarea readonly>${jsonExport}</textarea>
-                    <div class="instructions">
-                        <h4>Instruções para Atualizar no GitHub:</h4>
-                        <ol>
-                            <li>Cole o código JSON acima no arquivo <code>aniversariantes.html</code>, substituindo todo o array <code>aniversariantesPadrao</code> (cerca de linha 95).</li>
-                            <li>Salve o arquivo <code>aniversariantes.html</code>.</li>
-                            <li>Abra o terminal ou PowerShell no diretório: <code>C:\\WALDECK_IA\\FACA_NACAVEIRA</code></li>
-                            <li>Execute os comandos Git:
-                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" add .</code>
-                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" commit -m "Atualização de aniversariantes"</code>
-                                <br><code>& "C:\\Program Files\\Git\\bin\\git.exe" push origin main</code>
-                            </li>
-                            <li>O Netlify irá reimplantar automaticamente, tornando os novos aniversariantes visíveis para todos os visitantes.</li>
-                        </ol>
-                    </div>
-                    <button onclick="fecharModal()">FECHAR</button>
-                </div>
-            `;
-
-            // Adicionar modal ao body
-            document.body.appendChild(modal);
-
-            // Focar no textarea para facilitar seleção
-            setTimeout(() => {
-                const textarea = modal.querySelector('textarea');
-                textarea.focus();
-                textarea.select();
-            }, 100);
+        function acessarGaleria() {
+            window.location.href = "https://script.google.com/macros/s/AKfycbxdf9pqjyXNDUuUCPtJBQrh2-I6TLfgNjEXaRidiQnzvrzwSq39BJRmL8bc8GRSC6Y/exec";
         }
 
-        function fecharModal() {
-            const modal = document.getElementById('export-modal');
-            if (modal) {
-                modal.remove();
-            }
-        }
+
+
+
+
+
+
 
 
 
