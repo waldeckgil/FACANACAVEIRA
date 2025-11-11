@@ -144,14 +144,12 @@
         </div>
 
         <div class="aniversariantes-grid" id="aniversariantes-container">
-            <!-- Aniversariantes serão carregados aqui via JavaScript -->
-        </div>
+            </div>
 
         <h3 style="color: var(--cor-amarelo); text-align: center; margin-top: 50px;">Próximos Aniversariantes</h3>
         <div id="mes-proximo" class="mes-atual" style="font-size: 1.2em;"></div>
         <div class="aniversariantes-grid-proximo" id="aniversariantes-proximo-container">
-            <!-- Próximos aniversariantes serão carregados aqui via JavaScript -->
-        </div>
+            </div>
     </main>
 
 
@@ -164,7 +162,7 @@
         const aniversariantesPadrao = [
 
         {
-         // ******  DATA OK  FALTA INCLUIR A FOTO *******
+         // ****** DATA OK  FALTA INCLUIR A FOTO *******
         "nome": "MAURO",
         "data": "30-01",
         "foto": "MEMBROS/desconhecido.png",
@@ -183,8 +181,7 @@
 
 
 {
-    //                        *** FEVEREIRO *** 
-     // ****** DATA OK *******
+    //                        *** FEVEREIRO *** // ****** DATA OK *******
         "nome": "TANIA",
         "data": "11-02",
         "foto": "MEMBROS/TANIA.png",
@@ -203,8 +200,7 @@
 
 
 {
-    //                      **  MARÇO   *** 
-        // ****** DATA OK *******
+    //                      ** MARÇO   *** // ****** DATA OK *******
         "nome": "ALEX",
         "data": "17-03",
         "foto": "MEMBROS/ALEX.png",
@@ -220,8 +216,7 @@
         "anoNascimento": ""
     },
 
-                      //    ABRIL ****** 
- {
+                      //    ABRIL ****** {
           // ****** DATA OK *******
         "nome": "WALDECK",
         "data": "04-04",
@@ -240,8 +235,7 @@
     },
 
 
-                     //  ****   MAIO  ****** 
- {
+                     //  **** MAIO  ****** {
           // ****** DATA OK *******
         "nome": "ROSE",
         "data": "02-05",
@@ -261,9 +255,7 @@
 
 
 
-   //                  ****   J U N H O   ****** 
-
-   {
+   //                  **** J U N H O   ****** {
         // ****** DATA OK *******
         "nome": "VALERIA",
         "data": "07-06",
@@ -283,9 +275,7 @@
     },
 
 
-//                       ****     A G O S T O *** 
-    
-  {
+//                       **** A G O S T O *** {
      // ****** DATA OK *******
         "nome": "CELESTE",
         "data": "06-08",
@@ -317,12 +307,7 @@
     },
 
 
-    //                       **     O U T U B R O  *** 
-
-{
-        // ****** DATA OK *******
-
-
+    //                       ** O U T U B R O  *** // CHAVE { FOI REMOVIDA AQUI, POIS ESTAVA QUEBRANDO O ARRAY
   {
          // ****** DATA OK *******
         "nome": "ANDREIA",
@@ -358,9 +343,7 @@
     },
 
 
-    //           ***   N O V E M B R O **** 
-
-{
+    //           *** N O V E M B R O **** {
         "nome": "KLEBER",
         "data": "04-11",
         "foto": "MEMBROS/kleber.png",
@@ -376,7 +359,7 @@
         "anoNascimento": ""
     },
 
-//                          ****   D E Z E M B R O  *****
+//                          **** D E Z E M B R O  *****
 {
         "nome": "JACINTO",
         "data": "28-12",
@@ -396,8 +379,7 @@
 
 
 
-    // *****              F A L TA INCLUIR *** 
-    {
+    // ***** F A L TA INCLUIR *** {
         "nome": "AMARO",
         "data": "",
         "foto": "MEMBROS/AMARO.png",
@@ -430,11 +412,12 @@
 
         function obterMesAtual() {
             const dataAtual = new Date();
+            // A data atual é 11 de Novembro de 2025, o que retorna Mês 11.
             return dataAtual.getMonth() + 1; // getMonth() retorna 0-11, então +1
         }
 
         function obterMesProximo() {
-            return (obterMesAtual() % 12) + 1;
+            return (obterMesAtual() % 12) + 1; // Se for 11, retorna (11 % 12) + 1 = 12 (Dezembro)
         }
 
         function obterNomeMes(mes) {
@@ -443,6 +426,7 @@
 
         function filtrarAniversariantesDoMes(mes) {
             return aniversariantes.filter(aniversariante => {
+                // A data está no formato DD-MM. A função pega o MM e converte para número.
                 const mesAniversario = parseInt(aniversariante.data.split('-')[1]);
                 return mesAniversario === mes;
             });
@@ -469,9 +453,16 @@
 
         function ordenarPorData(aniversariantes) {
             return aniversariantes.sort((a, b) => {
+                // Se a data for vazia, move para o final
+                if (!a.data) return 1;
+                if (!b.data) return -1;
+                
                 const [diaA, mesA] = a.data.split('-').map(Number);
                 const [diaB, mesB] = b.data.split('-').map(Number);
+                
+                // Ordenar por mês (embora o filtro já faça isso, é uma boa prática)
                 if (mesA !== mesB) return mesA - mesB;
+                // Ordenar por dia
                 return diaA - diaB;
             });
         }
