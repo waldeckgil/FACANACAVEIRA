@@ -162,7 +162,7 @@
         const aniversariantesPadrao = [
 
         {
-         // ****** DATA OK  FALTA INCLUIR A FOTO *******
+         // ****** JANEIRO *******
         "nome": "MAURO",
         "data": "30-01",
         "foto": "MEMBROS/desconhecido.png",
@@ -170,7 +170,7 @@
         "anoNascimento": ""
     },
     
-       // ****** DATA OK *******
+    // ****** FEVEREIRO *******
      {
         "nome": "SILAS",
         "data": "28-02",
@@ -179,9 +179,7 @@
         "anoNascimento": ""
     },
 
-
-{
-    //                        *** FEVEREIRO *** // ****** DATA OK *******
+    {
         "nome": "TANIA",
         "data": "11-02",
         "foto": "MEMBROS/TANIA.png",
@@ -189,8 +187,7 @@
         "anoNascimento": ""
     },
 
-{
-     // ****** DATA OK *******
+    {
         "nome": "BRENDA",
         "data": "23-02",
         "foto": "MEMBROS/desconhecido.png",
@@ -199,8 +196,7 @@
     },
 
 
-{
-    //                      ** MARÇO   *** // ****** DATA OK *******
+    //                      ** MARÇO   *** {
         "nome": "ALEX",
         "data": "17-03",
         "foto": "MEMBROS/ALEX.png",
@@ -208,7 +204,7 @@
         "anoNascimento": ""
     },
 
- {
+    {
         "nome": "HARVRE",
         "data": "26-03",
         "foto": "MEMBROS/Harvre.png",
@@ -216,8 +212,7 @@
         "anoNascimento": ""
     },
 
-                      //    ABRIL ****** {
-          // ****** DATA OK *******
+    //    ABRIL ****** {
         "nome": "WALDECK",
         "data": "04-04",
         "foto": "MEMBROS/WALDECK.jpg",
@@ -225,8 +220,7 @@
         "anoNascimento": 1964
     },
 
-     {
-          // ****** DATA OK *******
+    {
         "nome": "CATIA",
         "data": "14-04",
         "foto": "MEMBROS/desconhecido.png",
@@ -235,8 +229,7 @@
     },
 
 
-                     //  **** MAIO  ****** {
-          // ****** DATA OK *******
+    //  **** MAIO  ****** {
         "nome": "ROSE",
         "data": "02-05",
         "foto": "MEMBROS/desconhecido.png",
@@ -244,8 +237,7 @@
         "anoNascimento": ""
     },
 
-     {
-          // ****** DATA OK *******
+    {
         "nome": "VALMY",
         "data": "14-05",
         "foto": "MEMBROS/desconhecido.png",
@@ -255,8 +247,7 @@
 
 
 
-   //                  **** J U N H O   ****** {
-        // ****** DATA OK *******
+    // **** J U N H O   ****** {
         "nome": "VALERIA",
         "data": "07-06",
         "foto": "MEMBROS/VALERIA.jpg",
@@ -265,8 +256,7 @@
     },
 
 
-   {
-        // ****** DATA OK *******
+    // **** J U L H O   ****** {
         "nome": "LINDINHA",
         "data": "16-07",
         "foto": "MEMBROS/desconhecido.png",
@@ -275,8 +265,7 @@
     },
 
 
-//                       **** A G O S T O *** {
-     // ****** DATA OK *******
+    //                       **** A G O S T O *** {
         "nome": "CELESTE",
         "data": "06-08",
         "foto": "MEMBROS/CELESTE.png",
@@ -284,8 +273,7 @@
         "anoNascimento": ""
     },
 
-{
-     // ****** DATA OK *******
+    {
         "nome": "DADINDA",
         "data": "21-08",
         "foto": "MEMBROS/desconhecido.png",
@@ -294,22 +282,9 @@
     },
 
 
+    // Setembro não tem entradas
 
-
-
-
-{
-        "nome": "JACINTO",
-        "data": "",
-        "foto": "MEMBROS/JACINTO.png",
-        "cargo": "MEMBRO",
-        "anoNascimento": ""
-    },
-
-
-    //                       ** O U T U B R O  *** // CHAVE { FOI REMOVIDA AQUI, POIS ESTAVA QUEBRANDO O ARRAY
-  {
-         // ****** DATA OK *******
+    //                       ** O U T U B R O  *** {
         "nome": "ANDREIA",
         "data": "01-10",
         "foto": "MEMBROS/desconhecido.png",
@@ -318,7 +293,6 @@
     },
     
     {
-         // ****** DATA OK *******
         "nome": "SELVA",
         "data": "07-10",
         "foto": "MEMBROS/SELVA.jpg",
@@ -351,7 +325,7 @@
         "anoNascimento": ""
     },
 
-{
+    {
         "nome": "EDMILSON",
         "data": "15-11",
         "foto": "MEMBROS/EDMILSON.png",
@@ -359,9 +333,9 @@
         "anoNascimento": ""
     },
 
-//                          **** D E Z E M B R O  *****
-{
-        "nome": "JACINTO",
+    //                          **** D E Z E M B R O  *****
+    {
+        "nome": "JACINTO", // Este é o Jacinto com data
         "data": "28-12",
         "foto": "MEMBROS/desconhecido.png",
         "cargo": "MEMBRO",
@@ -379,15 +353,22 @@
 
 
 
-    // ***** F A L TA INCLUIR *** {
+    // ***** ENTRIES SEM DATA (SERÃO COLOCADAS NO FIM DA LISTA) *** {
         "nome": "AMARO",
         "data": "",
         "foto": "MEMBROS/AMARO.png",
         "cargo": "MEMBRO",
         "anoNascimento": ""
+    },
+    
+    {
+        "nome": "JACINTO", // Este é o Jacinto sem data (entrada duplicada, mas mantida)
+        "data": "",
+        "foto": "MEMBROS/JACINTO.png",
+        "cargo": "MEMBRO",
+        "anoNascimento": ""
     }
    
-
         ];
 
         // Sempre começar com os aniversariantes padrão
@@ -396,7 +377,7 @@
         // Carregar adições do localStorage e mesclar, evitando duplicatas
         let additions = JSON.parse(localStorage.getItem('aniversariantes')) || [];
         for (let add of additions) {
-            if (!aniversariantes.find(a => a.nome === add.nome)) {
+            if (!aniversariantes.find(a => a.nome === add.nome && a.data === add.data)) {
                 aniversariantes.push(add);
             }
         }
@@ -412,12 +393,11 @@
 
         function obterMesAtual() {
             const dataAtual = new Date();
-            // A data atual é 11 de Novembro de 2025, o que retorna Mês 11.
             return dataAtual.getMonth() + 1; // getMonth() retorna 0-11, então +1
         }
 
         function obterMesProximo() {
-            return (obterMesAtual() % 12) + 1; // Se for 11, retorna (11 % 12) + 1 = 12 (Dezembro)
+            return (obterMesAtual() % 12) + 1;
         }
 
         function obterNomeMes(mes) {
@@ -426,7 +406,9 @@
 
         function filtrarAniversariantesDoMes(mes) {
             return aniversariantes.filter(aniversariante => {
-                // A data está no formato DD-MM. A função pega o MM e converte para número.
+                // Filtra apenas se houver data
+                if (!aniversariante.data) return false;
+                
                 const mesAniversario = parseInt(aniversariante.data.split('-')[1]);
                 return mesAniversario === mes;
             });
@@ -436,6 +418,7 @@
         function criarCardAniversariante(aniversariante, isProximo = false) {
             const [dia, mes] = aniversariante.data.split('-');
             const currentYear = new Date().getFullYear();
+            // Calcula a idade apenas se houver ano de nascimento
             const age = aniversariante.anoNascimento && aniversariante.anoNascimento !== "" ? currentYear - aniversariante.anoNascimento : null;
             const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
             const cardClass = isProximo ? 'aniversariante-card-proximo' : 'aniversariante-card';
@@ -453,14 +436,14 @@
 
         function ordenarPorData(aniversariantes) {
             return aniversariantes.sort((a, b) => {
-                // Se a data for vazia, move para o final
+                // Move entradas sem data para o final
                 if (!a.data) return 1;
                 if (!b.data) return -1;
                 
                 const [diaA, mesA] = a.data.split('-').map(Number);
                 const [diaB, mesB] = b.data.split('-').map(Number);
                 
-                // Ordenar por mês (embora o filtro já faça isso, é uma boa prática)
+                // Ordenar por mês (embora o filtro já faça isso)
                 if (mesA !== mesB) return mesA - mesB;
                 // Ordenar por dia
                 return diaA - diaB;
