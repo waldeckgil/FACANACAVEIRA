@@ -263,7 +263,7 @@ body {
 
 /* --- ESTILOS IRMANDADE (Grid de Membros) --- */
 
-.titulo-lideranca, .titulo-membros {
+.titulo-lideranca,.titulo-diretoria, .titulo-membros {
     width: 100%;
     text-align: center;
     font-family: var(--fonte-titulo);
