@@ -237,6 +237,11 @@
                     <p>Acesse a planilha financeira do grupo para visualizar e editar dados administrativos.</p>
                     <button>ACESSAR PLANILHA</button>
                 </div>
+                <div class="admin-card" onclick="acessarControlePagamentos()">
+                    <h3>💵 CONTROLE DE PAGAMENTOS</h3>
+                    <p>Acesse o sistema de controle de pagamentos do grupo para gerenciar as contribuições dos membros.</p>
+                    <button>ACESSAR CONTROLE</button>
+                </div>
                 <div class="admin-card" onclick="acessarGaleria()">
                     <h3>Controle da Galeria de fotos - ADM Site</h3>
                     <p>Acesse o controle administrativo da galeria de fotos do site.</p>
@@ -303,8 +308,7 @@
 
         const CORRECT_PASSWORD = "adsumus";
         const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
-
-
+        const PAGAMENTOS_URL = "https://script.google.com/macros/s/AKfycbwg8OaCOkAd0kkXiGt67S-A_0i1QHqQZ1Xx9woQj1OkulSGtAHOsWSml-42q_mLEnV7UQ/exec";
 
 
 
@@ -335,16 +339,13 @@
             window.location.href = GOOGLE_SHEET_URL;
         }
 
+        function acessarControlePagamentos() {
+            window.location.href = PAGAMENTOS_URL;
+        }
+
         function acessarGaleria() {
             window.location.href = "https://script.google.com/macros/s/AKfycbxdf9pqjyXNDUuUCPtJBQrh2-I6TLfgNjEXaRidiQnzvrzwSq39BJRmL8bc8GRSC6Y/exec";
         }
-
-
-
-
-
-
-
 
 
     </script>
