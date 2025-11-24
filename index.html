@@ -115,8 +115,7 @@
     <main class="secao-home">
        
         <div class="datas-grid" id="datas-container">
-            <!-- Datas comemorativas serão carregadas aqui via JavaScript -->
-        </div>
+            </div>
     </main>
 
 
@@ -177,9 +176,30 @@
         }
 
         function filtrarDatasDoMes(mes) {
+            // Versão anterior:
+            /*
             return datasComemorativas.filter(data => {
                 const mesData = parseInt(data.data.split('-')[1]);
                 return mesData === mes;
+            });
+            */
+            
+            // Versão corrigida para não exibir datas que já passaram:
+            const dataAtual = new Date();
+            const diaAtual = dataAtual.getDate(); // Pega o dia de hoje (1 a 31)
+
+            return datasComemorativas.filter(data => {
+                const [diaEventoStr, mesEventoStr] = data.data.split('-');
+                const diaEvento = parseInt(diaEventoStr);
+                const mesEvento = parseInt(mesEventoStr);
+                
+                // 1. O mês do evento deve ser o mês atual
+                if (mesEvento !== mes) {
+                    return false;
+                }
+
+                // 2. Se o mês for o atual, o dia do evento deve ser MAIOR OU IGUAL ao dia atual
+                return diaEvento >= diaAtual;
             });
         }
 
