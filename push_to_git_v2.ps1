@@ -48,6 +48,11 @@ if ($isFirstPush.ToUpper() -eq "S") {
     # ---
     Write-Host "---"
     Write-Host "Iniciando processo de commit e push para o repositório existente."
+    
+    # *** ALTERAÇÃO ADICIONADA AQUI: SINCRONIZAR COM O REMOTO ***
+    # Isso resolve o erro de [rejected] se o remoto tiver alterações (ex: README.md)
+    Write-Host "Executando: $gitExe pull origin main (Sincronizando com o remoto)"
+    & $gitExe pull origin main
 }
 
 # ---
