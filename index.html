@@ -280,7 +280,7 @@
 
             const container = document.getElementById('datas-container');
             if (datasDoMes.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--cor-branco); font-size: 1.2em; margin: 50px 0; grid-column: 1 / -1;">Nenhuma data comemorativa neste mês. Mas a estrada nos reserva muitas surpresas!</p>';
+                container.innerHTML = '<p style="text-align: center; color: var(--cor-branco); font-size: 1.2em; margin: 50px 0; grid-column: 1 / -1;">Nenhum Evento ou data comemorativa para este mês !</p>';
             } else {
                 container.innerHTML = datasDoMes.map(data => criarCardData(data)).join('');
             }
