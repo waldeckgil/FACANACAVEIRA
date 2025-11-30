@@ -132,7 +132,8 @@
                 "data": "27-10",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/FACA.png",
                 "cargo": " ",
-                "anoNascimento": 2013
+                "anoNascimento": 2013,
+                "img_temp": "N"
             },
             {
                 //27-07
@@ -140,7 +141,8 @@
                 "data": "27-07",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_MOTOCICICLSITA.jpg",
                 "cargo": "",
-                "anoNascimento": ""
+                "anoNascimento": "",
+                "img_temp": "N"
             },
             {
                 //13-07
@@ -148,16 +150,18 @@
                 "data": "13-07",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_ROCK.png",
                 "cargo": "",
-                "anoNascimento": ""
+                "anoNascimento": "",
+                "img_temp": "N"
             },
           
       {
-                //           *****          EVENTO TEMPORARIO    *********************************
+                //           ***** EVENTO TEMPORARIO    *********************************
                 "nome": "EVENTO TEMPORARIO TESTE",
-                "data": "30-11",
+                "data": "30-11-2025",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_ROCK.png",
                 "cargo": "",
-                "anoNascimento": ""
+                "anoNascimento": "",
+                "img_temp": "S" // Evento temporário que aparecerá apenas em 2025.
             },
 
 
@@ -168,7 +172,8 @@
                 "data": "02-05",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/DIA_MULHER_MOTOCICLISTA.jpg",
                 "cargo": "",
-                "anoNascimento": ""
+                "anoNascimento": "",
+                "img_temp": "N"
             },
      
 
@@ -177,7 +182,8 @@
                 "data": "20-11",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/CONSCIENCIA_NEGRA.png",
                 "cargo": "",
-                "anoNascimento": ""
+                "anoNascimento": "",
+                "img_temp": "N"
             }
 
 
@@ -202,35 +208,55 @@
         }
 
         function filtrarDatasDoMes(mes) {
-            // Versão anterior:
-            /*
-            return datasComemorativas.filter(data => {
-                const mesData = parseInt(data.data.split('-')[1]);
-                return mesData === mes;
-            });
-            */
-            
-            // Versão corrigida para não exibir datas que já passaram:
+            // Versão corrigida para lidar com datas temporárias (DD-MM-YYYY) ou recorrentes (DD-MM).
             const dataAtual = new Date();
             const diaAtual = dataAtual.getDate(); // Pega o dia de hoje (1 a 31)
+            const anoAtual = dataAtual.getFullYear(); // Pega o ano atual (ex: 2025)
 
             return datasComemorativas.filter(data => {
-                const [diaEventoStr, mesEventoStr] = data.data.split('-');
-                const diaEvento = parseInt(diaEventoStr);
-                const mesEvento = parseInt(mesEventoStr);
+                const isTemp = data.img_temp === 'S'; // Verifica se a data é temporária
+                const dataParts = data.data.split('-'); // Divide a data (DD, MM ou DD, MM, YYYY)
                 
-                // 1. O mês do evento deve ser o mês atual
-                if (mesEvento !== mes) {
+                let diaEvento, mesEvento, anoEvento = anoAtual; // Define o ano como atual por padrão
+
+                if (isTemp && dataParts.length === 3) {
+                    // Formato temporário: DD-MM-YYYY
+                    diaEvento = parseInt(dataParts[0]); //
+                    mesEvento = parseInt(dataParts[1]); //
+                    anoEvento = parseInt(dataParts[2]); //
+
+                    // REGRA 1 (TEMPORÁRIA): Exibir SOMENTE se o ano informado for o atual
+                    if (anoEvento !== anoAtual) { // Se o ano for diferente, ignora a data
+                        return false;
+                    }
+                } else if (dataParts.length === 2) {
+                    // Formato padrão (Recorrente): DD-MM
+                    diaEvento = parseInt(dataParts[0]); //
+                    mesEvento = parseInt(dataParts[1]); //
+                    // anoEvento permanece como anoAtual
+                } else {
+                    // Ignora formatos inválidos
+                    return false;
+                }
+                
+                // REGRA 2: O mês do evento deve ser o mês atual
+                if (mesEvento !== mes) { //
                     return false;
                 }
 
-                // 2. Se o mês for o atual, o dia do evento deve ser MAIOR OU IGUAL ao dia atual
-                return diaEvento >= diaAtual;
+                // REGRA 3: Se o mês for o atual, o dia do evento deve ser MAIOR OU IGUAL ao dia atual (não mostra datas passadas neste ano)
+                return diaEvento >= diaAtual; //
             });
         }
 
         function criarCardData(data) {
-            const [dia, mes] = data.data.split('-');
+            // Ajuste para formatar DD/MM ou DD/MM/YYYY no card
+            const dataParts = data.data.split('-');
+            const dia = dataParts[0];
+            const mes = dataParts[1];
+            // Inclui o ano no display da data se ele existir (formato DD/MM/YYYY)
+            const ano = dataParts.length === 3 ? `/${dataParts[2]}` : ''; 
+            
             const currentYear = new Date().getFullYear();
             const age = data.anoNascimento && data.anoNascimento !== "" ? currentYear - data.anoNascimento : null;
             const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
@@ -240,7 +266,7 @@
                     <h3>${data.nome}</h3>
                     <p>${data.cargo}</p>
                     ${ageDisplay}
-                    <p class="data-aniversario">${dia}/${mes}</p>
+                    <p class="data-aniversario">${dia}/${mes}${ano}</p>
                 </div>
             `;
         }
