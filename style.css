@@ -23,9 +23,9 @@ body {
     
     /* === ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
     background-image: url('Caveira_Motos.jpg'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed; 
+    background-size: cover; /* Garante que a imagem cubra todo o corpo */
+    background-repeat: no-repeat; /* Impede repeticao */
+    background-attachment: fixed; /* Fixa a imagem, o conteudo rola por cima */
     background-position: center center; 
     background-color: var(--cor-preto); 
     /* ================================================= */
@@ -57,333 +57,75 @@ body {
 
 .menu-principal a {
     text-decoration: none;
-    color: var(--cor-amarelo);
-    font-family: var(--fonte-titulo);
-    font-size: 1.1em;
-    padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-.menu-principal a:hover, .menu-principal a.ativo {
-    color: var(--cor-vermelho);
-    border-bottom: 2px solid var(--cor-amarelo); 
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
-}
-
-/* SECAO HOME (Com a Logo de Fundo) */
-.secao-home {
-    height: 70vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative; 
-    overflow: hidden; 
-    z-index: 1; 
-}
-
-/* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'AGUA) */
-.secao-home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('FACA.png'); 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%; 
-    opacity: 0.15; 
-    z-index: -1; 
-}
-
-.conteudo-principal {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 40px;
-    border-radius: 10px;
-    z-index: 10; 
-    max-width: 800px; 
-    width: 90%;      
-}
-
-.conteudo-principal h1 {
-    font-family: var(--fonte-titulo);
-    font-size: 3em;
-    color: var(--cor-amarelo);
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px var(--cor-vermelho); 
-}
-
-.lema {
-    font-size: 1.2em;
-    color: var(--cor-branco); 
-    margin-bottom: 30px;
-    font-weight: bold;
-    font-style: italic;
-}
-
-.botao-cta {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: var(--cor-vermelho);
     color: var(--cor-branco);
-    text-decoration: none;
     font-family: var(--fonte-titulo);
-    font-size: 1.2em;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    font-weight: 700;
 }
 
-.botao-cta:hover {
-    background-color: var(--cor-amarelo);
-    color: var(--cor-preto);
+.menu-principal a:hover,
+.menu-principal a.ativo {
+    color: var(--cor-amarelo);
+    background-color: rgba(255, 0, 0, 0.2); /* Fundo vermelho semi-transparente */
 }
 
-/* SECOES SECUNDARIAS */
+/* SECAO PADRAO */
 .secao-padrao {
-    padding: 30px 50px;
-    border-top: 1px solid #333;
-    background-color: rgba(0, 0, 0, 0.75); 
+    padding: 50px 20px;
+    min-height: 80vh; /* Garante que a seção ocupe pelo menos a altura da tela */
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza a seção */
 }
 
 .secao-padrao h2 {
+    color: var(--cor-amarelo);
     font-family: var(--fonte-titulo);
-    color: var(--cor-amarelo);
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 20px;
-    border-top: 2px solid var(--cor-vermelho);
-    border-bottom: 2px solid var(--cor-amarelo);
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--cor-vermelho);
+    padding-bottom: 10px;
     display: inline-block;
-    padding: 5px 0;
-}
-
-/* RODAPE */
-footer {
-    text-align: right; 
-    padding: 20px;
-    background-color: #000;
-    border-top: 3px solid var(--cor-vermelho);
-    color: var(--cor-amarelo);
-    font-family: var(--fonte-corpo);
-    font-size: 0.9em;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* --- ESTILOS GERAIS DE CONTEUDO --- */
-
 .container-texto {
     max-width: 900px;
     margin: 0 auto 50px auto;
     text-align: center;
 }
-
 .container-texto p {
     margin-bottom: 20px;
     font-size: 1.1em;
 }
-
 .pilares {
     list-style: none;
     text-align: center;
     padding: 0;
-    margin-top: 20px;
 }
 
 .pilares li {
-    margin: 10px 0;
-    color: var(--cor-branco); 
-    font-weight: bold;
-}
-/* --- ESTILOS ROTAS (Grid de Cartoes) --- */
-
-.grid-rotas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.cartao-rota {
-    background-color: #222;
-    border: 1px solid var(--cor-vermelho);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.cartao-rota:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.5);
-}
-
-.foto-rota {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover;
-}
-
-.info-rota {
-    padding: 20px;
-    text-align: center;
-}
-
-.info-rota h3 {
-    font-family: var(--fonte-titulo);
-    color: var(--cor-amarelo);
-    margin-bottom: 10px;
-}
-
-.data-rota {
-    color: var(--cor-vermelho);
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.btn-detalhe {
-    display: inline-block;
-    padding: 8px 15px;
-    margin-top: 15px;
-    background-color: var(--cor-amarelo);
-    color: var(--cor-preto);
-    text-decoration: none;
-    font-family: var(--fonte-titulo);
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 700px;
+    border-left: 5px solid var(--cor-amarelo);
     border-radius: 5px;
-}
-
-/* --- ESTILOS IRMANDADE (Grid de Membros) --- */
-
-.titulo-lideranca,.titulo-diretoria, .titulo-membros {
-    width: 100%;
-    text-align: center;
-    font-family: var(--fonte-titulo);
-    color: var(--cor-vermelho);
-    font-size: 1.8em;
-    margin: 40px 0 20px 0;
-    border-bottom: 2px solid var(--cor-amarelo);
-    padding-bottom: 5px;
-}
-
-.grid-membros {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.membro-card {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 200px;
-    border: 1px solid #444;
-}
-
-.membro-card.lider {
-    border: 2px solid var(--cor-vermelho);
-    background-color: #333;
-}
-
-.foto-membro {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--cor-amarelo);
-    margin-bottom: 10px;
-}
-
-.membro-card h4 {
-    color: var(--cor-amarelo);
-    font-family: var(--fonte-titulo);
-    margin-bottom: 5px;
-}
-
-.membro-card p {
-    color: var(--cor-branco);
-    font-size: 0.9em;
-}
-
-.patch-rank {
-    display: block;
-    color: var(--cor-vermelho);
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* --- ESTILOS CONTATO --- */
-
-.container-contato {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.info-contato-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.info-bloco {
-    background-color: #222;
-    padding: 30px 20px;
-    border-radius: 8px;
-    border-left: 5px solid var(--cor-vermelho);
-}
-
-.info-bloco h3 {
-    color: var(--cor-amarelo);
-    font-family: var(--fonte-titulo);
-    margin-bottom: 15px;
-    font-size: 1.4em;
-}
-
-.detalhe-contato {
-    margin: 5px 0;
-}
-
-.rede-social {
-    display: block;
-    padding: 10px;
-    background-color: var(--cor-amarelo); 
-    color: var(--cor-branco) !important; 
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.whatsapp-btn {
-    background-color: #25D366; 
-}
-
-.facebook-btn {
-    background-color: #1877F2; 
-}
-
-.instagram-btn {
-    background-color: #E4405F; 
-}
-
-.whatsapp-btn:hover {
-    background-color: #128C7E; 
-}
-
-.facebook-btn:hover {
-    background-color: #145CB3; 
-}
-
-.instagram-btn:hover {
-    background-color: #C135A1; 
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: left;
 }
 
 
-/* --- ESTILOS GALERIA PRINCIPAL (galeria.html) --- */
+/* ======================================= */
+/* ESTILOS DA GALERIA PRINCIPAL (galeria.html) */
+/* ======================================= */
 
 .galeria-grid {
     max-width: 1200px;
@@ -395,21 +137,36 @@ footer {
     padding: 0 20px;
 }
 
-.galeria-grid .foto-galeria {
-    width: 100%;
-    /* CORREÇÃO CHAVE: Forca a proporcao 1:1 (quadrada) */
+/* Estilo aplicado ao link que envolve a foto (1:1 PROPORÇÃO) */
+/* CORREÇÃO APLICADA AQUI: Garante o formato quadrado */
+.galeria-grid > a {
+    display: block; 
+    width: 100%; 
+    /* CORREÇÃO CRÍTICA: Proporção 1:1 (quadrada) para o item do grid */
     aspect-ratio: 1 / 1; 
-    /* CORREÇÃO CHAVE: Recorta a imagem para preencher o espaço sem distorcer */
-    object-fit: cover; 
+    overflow: hidden;
     border: 3px solid var(--cor-vermelho);
     border-radius: 5px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.galeria-grid .foto-galeria:hover {
+/* Estilo aplicado à imagem dentro do link */
+.galeria-grid img.foto-galeria {
+    width: 100%;
+    height: 100%;
+    /* Recorta a imagem para preencher o espaco sem distorcer */
+    object-fit: cover; 
+    display: block;
+}
+
+.galeria-grid > a:hover {
     transform: scale(1.02);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); 
 }
+
+/* O seletor .foto-galeria genérico foi removido para evitar conflitos. 
+   Os estilos foram transferidos para os seletores mais específicos (.galeria-grid img.foto-galeria) */
+
 
 /* ======================================= */
 /* ESTILOS PARA A GALERIA DE EVENTOS (rotas.html) */
@@ -421,26 +178,27 @@ footer {
     padding: 30px 20px;
     /* Usa grid para a exibicao responsiva */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     text-align: center;
     border-top: 3px solid var(--cor-amarelo); 
 }
 
 .galeria-eventos-dinamica h2 {
+    /* CORREÇÃO CHAVE: Garante que o título ocupe a primeira linha inteira do grid */
     grid-column: 1 / -1; 
     color: var(--cor-vermelho); 
     margin-bottom: 30px;
     text-transform: uppercase;
     font-size: 2em;
+    border-bottom: none; /* Remove a borda inferior do h2 padrao da galeria */
 }
 
-/* Estilo para a caixa do link da foto de evento */
+/* Estilo para a caixa do link da foto de evento (4:3 PROPORÇÃO) */
 .galeria-eventos-dinamica > a {
     display: block; 
     width: 100%; 
-    margin: 0; 
-    aspect-ratio: 4 / 3; /* Proporcao de paisagem (4:3) para eventos */
+    aspect-ratio: 4 / 3; /* CORREÇÃO CRÍTICA: Proporção de paisagem (4:3) para eventos */
     overflow: hidden;
     border: 2px solid var(--cor-amarelo); 
     border-radius: 8px;
@@ -459,6 +217,146 @@ footer {
     object-fit: cover; 
     display: block;
     transition: opacity 0.3s;
+}
+
+/* ==================================== */
+/* ESTILOS DA SEÇÃO ROTAS (rotas.html) */
+/* ==================================== */
+
+.grid-rotas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    margin-bottom: 50px;
+}
+
+.cartao-rota {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.cartao-rota:hover {
+    transform: translateY(-5px);
+}
+
+.foto-rota {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.info-rota {
+    padding: 20px;
+    text-align: center;
+}
+
+.info-rota h3 {
+    color: var(--cor-vermelho);
+    font-family: var(--fonte-titulo);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.data-rota {
+    color: var(--cor-amarelo);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.info-rota p {
+    color: var(--cor-branco);
+    margin-bottom: 20px;
+}
+
+.btn-detalhe {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--cor-amarelo);
+    color: var(--cor-preto);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-detalhe:hover {
+    background-color: #FFEA70;
+}
+
+
+/* ==================================== */
+/* ESTILOS DA SEÇÃO CONTATO (contato.html) */
+/* ==================================== */
+.contato-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.info-bloco {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--cor-vermelho);
+}
+
+.info-bloco h3 {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.detalhe-contato {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.rede-social {
+    display: block;
+    padding: 12px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    color: var(--cor-preto) !important;
+    transition: opacity 0.3s;
+}
+
+.instagram-btn {
+    background-color: #E4405F; /* Cor do Instagram */
+    color: var(--cor-branco) !important;
+}
+.facebook-btn {
+    background-color: #3B5998; /* Cor do Facebook */
+    color: var(--cor-branco) !important;
+}
+.whatsapp-btn {
+    background-color: #25D366; /* Cor do WhatsApp */
+    color: var(--cor-preto) !important;
+}
+
+.rede-social:hover {
+    opacity: 0.8;
+}
+
+/* RODAPE */
+footer {
+    text-align: right;
+    padding: 20px;
+    background-color: #000;
+    border-top: 3px solid var(--cor-vermelho);
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9em;
 }
 
 
@@ -487,34 +385,18 @@ footer {
         height: 60px; 
     }
 
-    /* Home Page */
-    .conteudo-principal {
-        padding: 30px 20px;
-        max-width: 90%;
+    /* Secoes */
+    .secao-padrao {
+        padding: 30px 10px;
     }
 
-    .conteudo-principal h1 {
-        font-size: 2em; 
-    }
-
-    /* Contato e Blocos */
-    .info-contato-grid {
-        grid-template-columns: 1fr; 
+    .secao-padrao h2 {
+        font-size: 2em;
     }
     
-    /* Galeria em Mobile */
-    .galeria-grid {
+    /* Contato e Blocos */
+    .contato-grid {
         grid-template-columns: 1fr;
     }
 
-    /* Galeria de Eventos em Mobile */
-    .galeria-eventos-dinamica {
-        padding: 15px 10px; 
-        grid-template-columns: 1fr; /* Forca 1 coluna no celular para melhor visualizacao */
-    }
-    
-    .galeria-eventos-dinamica > a {
-        aspect-ratio: 4 / 3; 
-        margin: 0;
-    }
 }
