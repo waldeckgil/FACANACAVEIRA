@@ -428,6 +428,52 @@ body {
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Efeito de brilho amarelo no hover */
 }
 
+/* ======================================= */
+/* ESTILOS PARA A GALERIA DE EVENTOS (rotas.html) */
+/* ======================================= */
+
+.galeria-eventos-dinamica {
+    /* Centraliza e define o limite de largura */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 3px solid var(--cor-amarelo); 
+}
+
+.galeria-eventos-dinamica h2 {
+    color: var(--cor-vermelho); 
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+/* Estilo para organizar as miniaturas em um layout de grade */
+.galeria-eventos-dinamica > a {
+    display: inline-block; 
+    margin: 8px;
+    width: 250px; 
+    height: 180px; 
+    overflow: hidden;
+    border: 2px solid var(--cor-amarelo); 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.galeria-eventos-dinamica > a:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para as fotos dentro dos links */
+.galeria-eventos-dinamica img.foto-galeria {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: opacity 0.3s;
+}
+
 
 /* ==================================== */
 /* RESPONSIVIDADE (MOBILE)      */
@@ -473,5 +519,16 @@ body {
     .galeria-grid {
         /* 1 coluna em celulares */
         grid-template-columns: 1fr;
+    }
+
+    /* NOVO: Galeria de Eventos em Mobile */
+    .galeria-eventos-dinamica {
+        padding: 15px 10px; /* Reduz padding */
+    }
+    
+    .galeria-eventos-dinamica > a {
+        width: 100%; /* Ocupa a largura total no celular */
+        height: 200px; /* Altura fixa para celular */
+        margin: 10px 0;
     }
 }
