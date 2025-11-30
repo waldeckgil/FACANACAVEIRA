@@ -26,8 +26,8 @@ body {
     background-size: cover; /* Garante que a imagem cubra todo o corpo */
     background-repeat: no-repeat; /* Impede repeticao */
     background-attachment: fixed; /* Fixa a imagem, o conteudo rola por cima */
-    background-position: center center; 
-    background-color: var(--cor-preto); 
+    background-position: center center; /* Centraliza a imagem */
+    background-color: var(--cor-preto); /* Cor de fallback */
     /* ================================================= */
 }
 
@@ -38,11 +38,11 @@ body {
     align-items: center;
     padding: 10px 50px;
     background-color: #000;
-    border-bottom: 3px solid var(--cor-vermelho); 
+    border-bottom: 3px solid var(--cor-vermelho); /* Linha divisoria vermelha */
 }
 
 .logo {
-    height: 120px; 
+    height: 120px; /* Ajuste o tamanho do logo */
 }
 
 /* MENU DE NAVEGACAO */
@@ -57,197 +57,179 @@ body {
 
 .menu-principal a {
     text-decoration: none;
-    color: var(--cor-branco);
-    font-family: var(--fonte-titulo);
-    padding: 10px 15px;
-    transition: color 0.3s, background-color 0.3s;
-    border-radius: 5px;
-    font-weight: 700;
-}
-
-.menu-principal a:hover,
-.menu-principal a.ativo {
     color: var(--cor-amarelo);
-    background-color: rgba(255, 0, 0, 0.2); /* Fundo vermelho semi-transparente */
+    font-family: var(--fonte-titulo);
+    font-size: 1.1em;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
-/* SECAO PADRAO */
+.menu-principal a:hover, .menu-principal a.ativo {
+    color: var(--cor-vermelho);
+    border-bottom: 2px solid var(--cor-amarelo); 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
+}
+
+/* SECAO HOME (Com a Logo de Fundo) */
+.secao-home {
+    height: 70vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'AGUA) */
+.secao-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('FACA.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%; /* Aumenta a logo para ocupar mais espaco */
+    opacity: 0.15; /* Aumenta a visibilidade */
+    z-index: -1; 
+}
+
+.conteudo-principal {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 40px;
+    border-radius: 10px;
+    z-index: 10; 
+    /* ESTILO ADICIONADO PARA REDUZIR O TAMANHO (Home Page) */
+    max-width: 800px; /* Define uma largura maxima de 800 pixels */
+    width: 90%;      /* Usa 90% da largura da tela, mas nunca mais que 800px */
+}
+
+.conteudo-principal h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 3em;
+    color: var(--cor-amarelo);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px var(--cor-vermelho); 
+}
+
+.lema {
+    font-size: 1.2em;
+    color: var(--cor-branco); 
+    margin-bottom: 30px;
+    font-weight: bold;
+    /* --- NOVO ESTILO PARA ITALICO --- */
+    font-style: italic;
+    /* -------------------------------- */
+}
+
+
+
+
+.botao-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--cor-vermelho);
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-family: var(--fonte-titulo);
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.botao-cta:hover {
+    background-color: var(--cor-amarelo);
+    color: var(--cor-preto);
+}
+
+/* SECOES SECUNDARIAS */
 .secao-padrao {
-    padding: 50px 20px;
-    min-height: 80vh; /* Garante que a seção ocupe pelo menos a altura da tela */
-    max-width: 1200px;
-    margin: 0 auto; /* Centraliza a seção */
+    padding: 30px 50px;
+    border-top: 1px solid #333;
+    
+    /* === NOVO FUNDO PARA CONTEUDO PARA MELHOR LEGIBILIDADE === */
+    background-color: rgba(0, 0, 0, 0.75); /* Fundo preto semi-transparente */
+    /* ========================================================= */
 }
 
 .secao-padrao h2 {
-    color: var(--cor-amarelo);
     font-family: var(--fonte-titulo);
-    font-size: 2.5em;
+    color: var(--cor-amarelo);
+    font-size: 2em;
     margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 3px solid var(--cor-vermelho);
-    padding-bottom: 10px;
+    border-top: 2px solid var(--cor-vermelho);
+    border-bottom: 2px solid var(--cor-amarelo);
     display: inline-block;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 5px 0;
+}
+
+/* RODAPE */
+.rodape {
+    text-align: right; /* ALTERADO PARA ALINHAR A DIREITA */
+    padding: 20px;
+    background-color: #000;
+    border-top: 3px solid var(--cor-vermelho);
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9em;
 }
 
 /* --- ESTILOS GERAIS DE CONTEUDO --- */
+
 .container-texto {
     max-width: 900px;
     margin: 0 auto 50px auto;
     text-align: center;
 }
+
 .container-texto p {
     margin-bottom: 20px;
     font-size: 1.1em;
 }
+
 .pilares {
     list-style: none;
     text-align: center;
     padding: 0;
+    margin-top: 20px;
 }
 
 .pilares li {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 15px;
-    margin: 10px auto;
-    max-width: 700px;
-    border-left: 5px solid var(--cor-amarelo);
-    border-radius: 5px;
-    font-style: italic;
-    font-size: 1.1em;
-    text-align: left;
+    margin: 10px 0;
+    color: var(--cor-branco); /* ALTERADO PARA BRANCO */
+    font-weight: bold;
 }
-
-
-/* ======================================= */
-/* ESTILOS DA GALERIA PRINCIPAL (galeria.html) */
-/* ======================================= */
-
-.galeria-grid {
-    max-width: 1200px;
-    margin: 40px auto;
-    display: grid;
-    /* Usa 250px como largura minima para as colunas */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 15px;
-    padding: 0 20px;
-}
-
-/* Estilo aplicado ao link que envolve a foto (1:1 PROPORÇÃO) */
-/* CORREÇÃO APLICADA AQUI: Garante o formato quadrado */
-.galeria-grid > a {
-    display: block; 
-    width: 100%; 
-    /* CORREÇÃO CRÍTICA: Proporção 1:1 (quadrada) para o item do grid */
-    aspect-ratio: 1 / 1; 
-    overflow: hidden;
-    border: 3px solid var(--cor-vermelho);
-    border-radius: 5px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Estilo aplicado à imagem dentro do link */
-.galeria-grid img.foto-galeria {
-    width: 100%;
-    height: 100%;
-    /* Recorta a imagem para preencher o espaco sem distorcer */
-    object-fit: cover; 
-    display: block;
-}
-
-.galeria-grid > a:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); 
-}
-
-/* O seletor .foto-galeria genérico foi removido para evitar conflitos. 
-   Os estilos foram transferidos para os seletores mais específicos (.galeria-grid img.foto-galeria) */
-
-
-/* ======================================= */
-/* ESTILOS PARA A GALERIA DE EVENTOS (rotas.html) */
-/* ======================================= */
-
-.galeria-eventos-dinamica {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 30px 20px;
-    /* Usa grid para a exibicao responsiva */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    text-align: center;
-    border-top: 3px solid var(--cor-amarelo); 
-}
-
-.galeria-eventos-dinamica h2 {
-    /* CORREÇÃO CHAVE: Garante que o título ocupe a primeira linha inteira do grid */
-    grid-column: 1 / -1; 
-    color: var(--cor-vermelho); 
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    font-size: 2em;
-    border-bottom: none; /* Remove a borda inferior do h2 padrao da galeria */
-}
-
-/* Estilo para a caixa do link da foto de evento (4:3 PROPORÇÃO) */
-.galeria-eventos-dinamica > a {
-    display: block; 
-    width: 100%; 
-    aspect-ratio: 4 / 3; /* CORREÇÃO CRÍTICA: Proporção de paisagem (4:3) para eventos */
-    overflow: hidden;
-    border: 2px solid var(--cor-amarelo); 
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.galeria-eventos-dinamica > a:hover {
-    transform: scale(1.02); 
-}
-
-/* Estilo para as fotos dentro dos links de eventos */
-.galeria-eventos-dinamica img.foto-galeria {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
-    transition: opacity 0.3s;
-}
-
-/* ==================================== */
-/* ESTILOS DA SEÇÃO ROTAS (rotas.html) */
-/* ==================================== */
+/* --- ESTILOS ROTAS (Grid de Cartoes) --- */
 
 .grid-rotas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 20px 0;
-    margin-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .cartao-rota {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
+    background-color: #222;
+    border: 1px solid var(--cor-vermelho);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .cartao-rota:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.5);
 }
 
 .foto-rota {
     width: 100%;
-    height: 200px;
+    height: 200px; 
     object-fit: cover;
-    display: block;
 }
 
 .info-rota {
@@ -256,107 +238,194 @@ body {
 }
 
 .info-rota h3 {
-    color: var(--cor-vermelho);
     font-family: var(--fonte-titulo);
+    color: var(--cor-amarelo);
     margin-bottom: 10px;
-    font-size: 1.5em;
 }
 
 .data-rota {
-    color: var(--cor-amarelo);
-    font-style: italic;
+    color: var(--cor-vermelho);
+    font-weight: bold;
     margin-bottom: 15px;
-}
-
-.info-rota p {
-    color: var(--cor-branco);
-    margin-bottom: 20px;
 }
 
 .btn-detalhe {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 8px 15px;
+    margin-top: 15px;
     background-color: var(--cor-amarelo);
     color: var(--cor-preto);
     text-decoration: none;
-    font-weight: bold;
+    font-family: var(--fonte-titulo);
     border-radius: 5px;
-    transition: background-color 0.3s;
 }
 
-.btn-detalhe:hover {
-    background-color: #FFEA70;
+/* --- ESTILOS IRMANDADE (Grid de Membros) --- */
+
+.titulo-lideranca,.titulo-diretoria, .titulo-membros {
+    width: 100%;
+    text-align: center;
+    font-family: var(--fonte-titulo);
+    color: var(--cor-vermelho);
+    font-size: 1.8em;
+    margin: 40px 0 20px 0;
+    border-bottom: 2px solid var(--cor-amarelo);
+    padding-bottom: 5px;
 }
 
+.grid-membros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-/* ==================================== */
-/* ESTILOS DA SEÇÃO CONTATO (contato.html) */
-/* ==================================== */
-.contato-grid {
+.membro-card {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    border: 1px solid #444;
+}
+
+.membro-card.lider {
+    border: 2px solid var(--cor-vermelho);
+    background-color: #333;
+}
+
+.foto-membro {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cor-amarelo);
+    margin-bottom: 10px;
+}
+
+.membro-card h4 {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    margin-bottom: 5px;
+}
+
+.membro-card p {
+    color: var(--cor-branco);
+    font-size: 0.9em;
+}
+
+.patch-rank {
+    display: block;
+    color: var(--cor-vermelho);
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* --- ESTILOS CONTATO --- */
+
+.container-contato {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-contato-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    padding: 20px 0;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .info-bloco {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    border: 2px solid var(--cor-vermelho);
+    background-color: #222;
+    padding: 30px 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--cor-vermelho);
 }
 
 .info-bloco h3 {
     color: var(--cor-amarelo);
     font-family: var(--fonte-titulo);
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-size: 1.4em;
 }
 
 .detalhe-contato {
     margin: 5px 0;
-    font-size: 1.1em;
 }
 
+/* O estilo generico abaixo sera sobrescrito pelas classes especificas de cor */
 .rede-social {
     display: block;
-    padding: 12px;
-    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--cor-amarelo); /* Cor base (sera sobrescrita) */
+    color: var(--cor-preto);
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    color: var(--cor-preto) !important;
-    transition: opacity 0.3s;
+    margin-top: 10px;
+}
+
+/* --- CORES PADRAO PARA BOTOES DE REDES SOCIAIS (ADICIONADO) --- */
+.rede-social {
+    /* Garante que o texto dentro dos botoes seja branco */
+    color: var(--cor-branco) !important; 
+}
+
+.whatsapp-btn {
+    background-color: #25D366; /* Verde do WhatsApp */
+}
+
+.facebook-btn {
+    background-color: #1877F2; /* Azul do Facebook */
 }
 
 .instagram-btn {
-    background-color: #E4405F; /* Cor do Instagram */
-    color: var(--cor-branco) !important;
-}
-.facebook-btn {
-    background-color: #3B5998; /* Cor do Facebook */
-    color: var(--cor-branco) !important;
-}
-.whatsapp-btn {
-    background-color: #25D366; /* Cor do WhatsApp */
-    color: var(--cor-preto) !important;
+    background-color: #E4405F; /* Vermelho/Rosa do Instagram (Cor primaria) */
 }
 
-.rede-social:hover {
-    opacity: 0.8;
+/* Garante que a transicao de cor no hover seja suave */
+.whatsapp-btn:hover {
+    background-color: #128C7E; /* Verde mais escuro no hover */
 }
 
-/* RODAPE */
-footer {
-    text-align: right;
-    padding: 20px;
-    background-color: #000;
-    border-top: 3px solid var(--cor-vermelho);
-    color: var(--cor-amarelo);
-    font-family: var(--fonte-corpo);
-    font-size: 0.9em;
+.facebook-btn:hover {
+    background-color: #145CB3; /* Azul mais escuro no hover */
+}
+
+.instagram-btn:hover {
+    background-color: #C135A1; /* Roxo/Rosa mais escuro no hover */
+}
+/* ------------------------------------------------------------- */
+
+
+/* --- ESTILOS GALERIA (CORRIGIDO PARA RESPONSIVIDADE) --- */
+
+.galeria-grid {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    /* CORRIGIDO: Usa 250px como largura minima, permitindo 4 ou mais colunas responsivas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.foto-galeria {
+    width: 100%;
+    /* CORRIGIDO: Forca a proporcao 1:1 (quadrada), removendo a altura fixa (300px) */
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; /* Recorta a imagem para preencher o espaco sem distorcer */
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.foto-galeria:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Efeito de brilho amarelo no hover */
 }
 
 
@@ -385,18 +454,24 @@ footer {
         height: 60px; 
     }
 
-    /* Secoes */
-    .secao-padrao {
-        padding: 30px 10px;
+    /* Home Page */
+    .conteudo-principal {
+        padding: 30px 20px;
+        max-width: 90%;
     }
 
-    .secao-padrao h2 {
-        font-size: 2em;
+    .conteudo-principal h1 {
+        font-size: 2em; 
+    }
+
+    /* Contato e Blocos */
+    .info-contato-grid {
+        grid-template-columns: 1fr; 
     }
     
-    /* Contato e Blocos */
-    .contato-grid {
+    /* Galeria em Mobile */
+    .galeria-grid {
+        /* 1 coluna em celulares */
         grid-template-columns: 1fr;
     }
-
 }
