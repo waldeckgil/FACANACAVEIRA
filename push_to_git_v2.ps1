@@ -34,60 +34,76 @@ if ($isFirstPush.ToUpper() -eq "S") {
     Write-Host "Executando: $gitExe init"
     & $gitExe init
 
+    # Remove o arquivo .env do cache do Git para que ele não seja rastreado (Opcional, mas seguro)
+    Write-Host "Executando: $gitExe rm --cached .env"
+    & $gitExe rm --cached .env
+
+    # Adiciona todos os arquivos alterados ao stage (necessário para criar o commit)
+    Write-Host "Executando: $gitExe add ."
+    & $gitExe add .
+    
+    # Realiza o commit inicial (temporário - cria o branch 'master' local)
+    Write-Host "Executando: $gitExe commit -m \"Primeiro commit inicial\""
+    & $gitExe commit -m "Primeiro commit inicial"
+
     # Conecta o repositório local ao repositório remoto no GitHub
-    $remoteUrl = "https://github.com/$githubUser/$repoName.git"
+    $remoteUrl = "https://github.com/$githubUser/$repoName"
     Write-Host "Executando: $gitExe remote add origin $remoteUrl"
     & $gitExe remote add origin $remoteUrl
-
-    Write-Host "Configuração inicial concluída."
+    
+    # *** COMANDO ADICIONADO AQUI: DEFINE O NOME DO BRANCH CORRETO ***
+    Write-Host "Executando: $gitExe branch -M main (renomeando o branch para 'main')"
+    & $gitExe branch -M main
+    
+    # Realiza o push
+    Write-Host "Executando: $gitExe push -u origin main (enviando o branch 'main' e configurando o upstream)"
+    & $gitExe push -u origin main
+    
     Write-Host "---"
-
+    Write-Host "Primeiro envio concluído com sucesso!"
+    
 } else {
     # ---
     # BLOCO DE COMANDOS PARA ENVIOS SUBSEQUENTES
     # ---
     Write-Host "---"
-    Write-Host "Iniciando processo de commit e push para o repositório existente."
+    Write-Host "Executando commit e push para o repositório existente."
     
-    # *** ALTERAÇÃO ADICIONADA AQUI: SINCRONIZAR COM O REMOTO ***
+    # *** IMPORTANTE: SINCRONIZAR COM O REMOTO ***
     # Isso resolve o erro de [rejected] se o remoto tiver alterações (ex: README.md)
     Write-Host "Executando: $gitExe pull origin main (Sincronizando com o remoto)"
     & $gitExe pull origin main
+    
+    # Remove o arquivo .env do cache do Git para que ele não seja rastreado
+    Write-Host "Executando: $gitExe rm --cached .env"
+    & $gitExe rm --cached .env
+
+    # Adiciona todos os arquivos alterados ao stage
+    Write-Host "Executando: $gitExe add . (Adicionando todas as alteracoes)"
+    & $gitExe add .
+
+    # Solicita a mensagem do commit
+    Write-Host "Digite a mensagem do commit (Ex: Correcao CSS e galeria):"
+    $commitMessage = Read-Host
+
+    # Verifica se a mensagem de commit não está vazia
+    if ([string]::IsNullOrEmpty($commitMessage)) {
+        Write-Host "Mensagem de commit não pode ser vazia. O script foi abortado."
+        exit
+    }
+
+    # Realiza o commit com a mensagem fornecida
+    Write-Host "Executando: $gitExe commit -m \"$commitMessage\""
+    & $gitExe commit -m "$commitMessage"
+
+    # Realiza o push
+    Write-Host "Executando: $gitExe push (Enviando alteracoes)"
+    & $gitExe push
+    
+    Write-Host "---"
+    Write-Host "Push concluído com sucesso!"
 }
 
-# ---
-# BLOCO DE COMANDOS PARA COMIT E PUSH (COMUM AOS DOIS CENÁRIOS)
-# ---
-
-# *** COMANDO ADICIONADO PARA GARANTIR O NOME DO BRANCH ***
-Write-Host "Executando: $gitExe branch -M main (garantindo o nome correto do branch: master -> main)"
-& $gitExe branch -M main
-
-# Remove o arquivo .env do cache do Git para que ele não seja rastreado
-Write-Host "Executando: $gitExe rm --cached .env"
-& $gitExe rm --cached .env
-
-# Adiciona todos os arquivos alterados ao stage
-Write-Host "Executando: $gitExe add ."
-& $gitExe add .
-
-# Solicita a mensagem do commit
-Write-Host "Digite a mensagem do commit:"
-$commitMessage = Read-Host
-
-# Verifica se a mensagem de commit não está vazia
-if ([string]::IsNullOrEmpty($commitMessage)) {
-    Write-Host "Mensagem de commit não pode ser vazia. O script foi abortado."
-    exit
-}
-
-# Realiza o commit com a mensagem fornecida
-Write-Host "Executando: $gitExe commit -m `"$commitMessage`""
-& $gitExe commit -m "$commitMessage"
-
-# Envia as alterações para o repositório remoto na branch 'main'
-Write-Host "Executando: $gitExe push -u origin main"
-& $gitExe push -u origin main
-
-Write-Host "---"
-Write-Host "Processo de envio para o GitHub concluído com sucesso!"
+# Aguarda para que a janela não feche imediatamente após a execução
+Write-Host "Pressione qualquer tecla para sair..."
+$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
