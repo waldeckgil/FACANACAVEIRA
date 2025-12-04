@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Administrativa | FACA NA CAVEIRA MG</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <style>
+        /* Estilos para a documentação */
+        .secao-doc {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            border: 2px solid var(--cor-vermelho);
+        }
+        .secao-doc h2 {
+            color: var(--cor-amarelo);
+            border-bottom: 2px solid var(--cor-vermelho);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .secao-doc h3 {
+            color: var(--cor-vermelho);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .secao-doc ul {
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        /* NOVO ESTILO: Layout de Grid para os Boxes de Conteúdo */
+        .fluxo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .fluxo-card {
+            background-color: rgba(255, 255, 255, 0.05); /* Fundo um pouco mais claro */
+            border: 1px solid var(--cor-vermelho);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .fluxo-card h4 {
+            color: var(--cor-amarelo);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.5);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .fluxo-card p {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        .fluxo-card strong {
+            color: var(--cor-vermelho);
+        }
+        /* Estilos de Tabela para a seção Financeira */
+        .secao-doc table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .secao-doc th, .secao-doc td {
+            border: 1px solid var(--cor-vermelho);
+            padding: 10px;
+            text-align: left;
+        }
+        .secao-doc th {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: var(--cor-amarelo);
+        }
+        .aviso {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-left: 5px solid var(--cor-amarelo);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .link-destaque {
+            color: var(--cor-amarelo);
+            word-break: break-all;
+            text-decoration: none;
+        }
+        .link-destaque:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <a href="index.html"><img src="FACA.jpg" alt="Logo Motogrupo Faca na Caveira MG RJ-BRASIL" class="logo"></a>
+        </div>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="galeria.html">GALERIA</a></li>
+                <li><a href="historia.html">HISTÓRIA</a></li>
+                <li><a href="rotas.html">ALBÚM DE EVENTOS</a></li>
+                <li><a href="irmandade.html">IRMANDADE</a></li>
+                <li><a href="aniversariantes.html">ANIVERSARIANTES</a></li>
+                <li><a href="junte-se.html">JUNTE-SE A NÓS</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="administracao.html" class="ativo">ADMINISTRAÇÃO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="secao-padrao">
+        <div class="secao-doc">
+            <h2>DOCUMENTAÇÃO ADMINISTRATIVA - MANUAL DE USO</h2>
+            <p>Guia completo para a manutenção, gestão de conteúdo e finanças do site FACA NA CAVEIRA MG.</p>
+            
+            <div class="aviso">
+                <strong>ATENÇÃO:</strong> O acesso é protegido por senha. A segurança dos dados é responsabilidade de todos.
+            </div>
+
+            <h3>1. Fluxo de Conteúdo e Responsabilidades por Página</h3>
+            <p>Os fluxos de imagem e conteúdo são automatizados via Google Drive. Siga as regras para garantir a atualização automática do site.</p>
+            
+            <div class="fluxo-grid">
+                
+                <div class="fluxo-card">
+                    <h4>HOME (Boletim de Notícias)</h4>
+                    <p><strong>Conteúdo Chave:</strong> Fachada e Datas Comemorativas. A listagem é automática.</p>
+                    <p><strong>Responsável:</strong> Waldeck & Nando</p>
+                    <p><strong>Pasta Drive:</strong> <a href="https://drive.google.com/drive/folders/1SdJvpDdVzq3GChMs8Z8QbvzzDJkfyfKc" target="_blank" class="link-destaque">EVENTOS_FACANACAVEIRA</a></p>
+                    <p><strong>Periodicidade:</strong> **TODA QUARTA-FEIRA:** Nando faz o upload de imagens de eventos. Waldeck atualiza a base de dados.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>GALERIA (Memória Visual)</h4>
+                    <p><strong>Conteúdo Chave:</strong> Memória Visual do Grupo. Fluxo é **AUTOMÁTICO** via AppsScript.</p>
+                    <p><strong>Responsável:</strong> Nando</p>
+                    <p><strong>Pasta Drive:</strong> <a href="https://drive.google.com/drive/folders/1xNq6d2qeTUEKUannwcVWGlFS4XQkKoqc" target="_blank" class="link-destaque">GALERIA_FACANACAVEIRA</a></p>
+                    <p><strong>Periodicidade:</strong> **PODE SER FEITO EM QUALQUER DIA.** O site atualiza automaticamente a cada 6 horas. Use o **Sincronismo Manual** para urgências.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>HISTÓRIA (historia.html)</h4>
+                    <p><strong>Conteúdo Chave:</strong> Texto e fundação do Motogrupo.</p>
+                    <p><strong>Responsável:</strong> Waldeck (Edição) & Selva (Revisão).</p>
+                    <p><strong>Periodicidade:</strong> Somente quando houver alteração na história ou pilares do grupo.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>ALBÚM DE EVENTOS (rotas.html)</h4>
+                    <p><strong>Conteúdo Chave:</strong> Lista de eventos e rotas passadas.</p>
+                    <p><strong>Responsável:</strong> Waldeck (Edição) & Nando (Conteúdo).</p>
+                    <p><strong>Periodicidade:</strong> Após cada grande evento ou rota concluída.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>IRMANDADE (Lista de Membros)</h4>
+                    <p><strong>Conteúdo Chave:</strong> Lista de membros, cargo e foto.</p>
+                    <p><strong>Responsável:</strong> Selva (**Aprova**) & Waldeck (**Executa**).</p>
+                    <p><strong>Periodicidade:</strong> Sob demanda (Inclusão/Exclusão de membros).</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>ANIVERSARIANTES</h4>
+                    <p><strong>Conteúdo Chave:</strong> Exibição automática dos aniversariantes do mês atual e próximo.</p>
+                    <p><strong>Responsável:</strong> Nando & Waldeck</p>
+                    <p><strong>Periodicidade:</strong> Nando envia as datas para Waldeck fazer a atualização da base de dados no fechamento mensal.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>JUNTE-SE A NÓS / CONTATO</h4>
+                    <p><strong>Conteúdo Chave:</strong> Formulário de contato e redes sociais.</p>
+                    <p><strong>Responsável:</strong> Nando & Selva</p>
+                    <p><strong>Periodicidade:</strong> Monitoramento contínuo do e-mail (<span class="link-destaque">facanacaveiramg.2013@gmail.com</span>) e WhatsApp.</p>
+                </div>
+
+                <div class="fluxo-card">
+                    <h4>ADMINISTRAÇÃO</h4>
+                    <p><strong>Conteúdo Chave:</strong> Acesso aos sistemas de gestão e links de manutenção.</p>
+                    <p><strong>Responsável:</strong> Selva (Senha) & Waldeck (Manutenção Técnica).</p>
+                    <p><strong>Periodicidade:</strong> Acesso sob demanda para gestão e manutenção.</p>
+                </div>
+
+            </div>
+
+            <h3>2. Guia de Uso: Sistema de Controle de Pagamentos (Kleber)</h3>
+            <p>O Diretor Financeiro acessa o sistema via link na Área Administrativa (<span class="link-destaque">acessarControlePagamentos()</span>).</p>
+            
+            <h4>Estrutura e Segurança</h4>
+            <ul>
+                <li><strong>Senha de Registro:</strong> É **obrigatória** para lançar pagamentos ou incluir novos membros no sistema.</li>
+                <li><strong>Base de Dados:</strong> O sistema depende de três abas principais: **CADASTRO**, **VALORES** e **CALENDARIO_PGTO_AAAA**. Mantenha-as precisas.</li>
+            </ul>
+
+            <h4>Fluxo de Trabalho</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AÇÃO</th>
+                        <th>ABA NO SISTEMA</th>
+                        <th>QUANDO USAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registro de Pagamento/Membro</td>
+                        <td>Registro</td>
+                        <td>Conforme recebimento dos pagamentos.</td>
+                    </tr>
+                    <tr>
+                        <td>Gestão de Inadimplência</td>
+                        <td>Pendências</td>
+                        <td>Início do mês (para emissão de cobranças).</td>
+                    </tr>
+                    <tr>
+                        <td>Relatório Mensal</td>
+                        <td>Sumário do Caixa</td>
+                        <td>Fechamento mensal (para prestação de contas ao Selva).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Guia de Manutenção Técnica (Waldeck e Nando)</h3>
+            <p>Comandos essenciais para atualizar e proteger o site (Uso no PowerShell/Git Bash).</p>
+
+            <h4>Comando Principal: Publicação (`push_to_git_v2.ps1`)</h4>
+            <ul>
+                <li><strong>Função:</strong> Envia todas as alterações (códigos, textos, links) para o site online.</li>
+                <li><strong>Ação:</strong> Após salvar as mudanças, rodar: <code>.\push_to_git_v2.ps1</code></li>
+                <li><strong>Mensagem:</strong> Sempre use uma mensagem de confirmação clara (Ex: "Atualizado Irmandade", "Corrigido Aniversariante").</li>
+            </ul>
+
+            <h4>Comando de Emergência: Restauração (`restore_state.sh`)</h4>
+            <ul>
+                <li><strong>Função:</strong> **Volta o site no tempo** (desfaz a última alteração) se algo der errado (erro de código).</li>
+                <li><strong>Uso:</strong> SOMENTE se o site quebrar ou apresentar erro.</li>
+                <li><strong>Ação:</strong> Rodar o script: <code>./restore_state.sh</code></li>
+            </ul>
+
+        </div>
+    </main>
+
+    <footer class="rodape">
+       <p>&copy; 2013 - 2025 FACA NA CAVEIRA MG | RJ-BRASIL</p>
+    </footer>
+
+</body>
+</html>

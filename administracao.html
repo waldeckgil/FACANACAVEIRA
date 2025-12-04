@@ -31,167 +31,63 @@
             border-radius: 4px;
             background-color: #222;
             color: var(--cor-branco);
-            font-size: 1em;
+            font-size: 1.1em;
             text-align: center;
         }
-        /* ESTILO DO BOTÃO AGORA VISÍVEL */
         .login-box button {
-            padding: 10px 20px;
             background-color: var(--cor-vermelho);
             color: var(--cor-branco);
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.1em;
-            font-family: var(--fonte-titulo);
             transition: background-color 0.3s;
+            font-family: var(--fonte-titulo);
         }
         .login-box button:hover {
-            background-color: var(--cor-amarelo);
-            color: var(--cor-preto);
+            background-color: #cc0000;
         }
-        /* FIM DO ESTILO DO BOTÃO */
 
-        #admin-menu {
-            max-width: 800px;
+        /* Estilos para o menu administrativo após o login */
+        .admin-menu {
+            max-width: 600px;
             margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            border: 2px solid var(--cor-vermelho);
             text-align: center;
         }
-        #admin-menu h2 {
+        .admin-menu h2 {
             margin-bottom: 30px;
             color: var(--cor-amarelo);
             font-family: var(--fonte-titulo);
         }
-        .admin-options {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .admin-card {
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 2px solid var(--cor-vermelho);
-            border-radius: 8px;
-            padding: 30px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        .admin-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-        }
-        .admin-card h3 {
-            color: var(--cor-amarelo);
-            margin-bottom: 15px;
-            font-family: var(--fonte-titulo);
-        }
-        .admin-card p {
-            color: var(--cor-branco);
-            margin-bottom: 20px;
-        }
-        .admin-card button {
-            padding: 12px 24px;
-            background-color: var(--cor-vermelho);
-            color: var(--cor-branco);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-family: var(--fonte-titulo);
-            transition: background-color 0.3s;
-        }
-        .admin-card button:hover {
-            background-color: var(--cor-amarelo);
-            color: var(--cor-preto);
-        }
-
-
-        /* Estilos para o modal de exportação */
-        #export-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        #export-modal .modal-content {
-            background-color: rgba(0, 0, 0, 0.95);
-            border: 2px solid var(--cor-vermelho);
-            border-radius: 8px;
-            padding: 30px;
-            max-width: 800px;
+        .admin-menu button {
+            display: block;
             width: 90%;
-            max-height: 80%;
-            overflow-y: auto;
-            color: var(--cor-branco);
-        }
-        #export-modal h3 {
-            color: var(--cor-amarelo);
-            margin-bottom: 20px;
-            font-family: var(--fonte-titulo);
-            text-align: center;
-        }
-        #export-modal textarea {
-            width: 100%;
-            height: 300px;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 4px;
-            background-color: #222;
-            color: var(--cor-branco);
-            font-family: monospace;
-            font-size: 0.9em;
-            resize: vertical;
-        }
-        #export-modal .instructions {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-        }
-        #export-modal .instructions h4 {
-            color: var(--cor-amarelo);
-            margin-bottom: 10px;
-            font-family: var(--fonte-titulo);
-        }
-        #export-modal .instructions ol {
-            color: var(--cor-branco);
-            padding-left: 20px;
-        }
-        #export-modal .instructions li {
-            margin-bottom: 8px;
-        }
-        #export-modal .instructions code {
-            background-color: #333;
-            padding: 2px 4px;
-            border-radius: 2px;
-            font-family: monospace;
-        }
-        #export-modal button {
-            margin-top: 20px;
-            padding: 12px 24px;
+            margin: 10px auto;
             background-color: var(--cor-vermelho);
             color: var(--cor-branco);
             border: none;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
             font-family: var(--fonte-titulo);
-            transition: background-color 0.3s;
+            font-size: 1.1em;
+            text-transform: uppercase;
         }
-        #export-modal button:hover {
-            background-color: var(--cor-amarelo);
-            color: var(--cor-preto);
+        .admin-menu button:hover {
+            background-color: #cc0000;
+            transform: scale(1.02);
         }
-
-
+        .info-link {
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 0, 0, 0.5);
+            color: var(--cor-amarelo);
+        }
     </style>
 </head>
 <body>
@@ -200,7 +96,6 @@
         <div class="logo-container">
             <a href="index.html"><img src="FACA.jpg" alt="Logo Motogrupo Faca na Caveira MG RJ-BRASIL" class="logo"></a>
         </div>
-        
         <nav class="menu-principal">
             <ul>
                 <li><a href="index.html">HOME</a></li>
@@ -211,106 +106,46 @@
                 <li><a href="aniversariantes.html">ANIVERSARIANTES</a></li>
                 <li><a href="junte-se.html">JUNTE-SE A NÓS</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
-
                 <li><a href="administracao.html" class="ativo">ADMINISTRAÇÃO</a></li>
-
             </ul>
         </nav>
     </header>
 
     <main class="secao-padrao">
         <div id="login-box" class="login-box">
-            <h2>ÁREA DE ADMINISTRAÇÃO</h2>
-            <p>Acesso restrito --------.</p>
-
-            <input type="password" id="adminPassword" placeholder="Digite a Senha" onkeydown="handleKey(event)">
-
-            <button onclick="checkPassword()">ACESSAR</button>
+            <h2>ACESSO RESTRITO</h2>
+            <input type="password" id="adminPassword" placeholder="Digite a Senha de Administrador" onkeydown="handleKey(event)">
+            <button onclick="checkPassword()">ENTRAR</button>
         </div>
 
-
-        <div id="admin-menu" style="display: none;">
+        <div id="admin-menu" class="admin-menu" style="display: none;">
             <h2>MENU ADMINISTRATIVO</h2>
-            <div class="admin-options">
-                <div class="admin-card" onclick="acessarPlanilha()">
-                    <h3>📊 PLANILHA FINANCEIRA</h3>
-                    <p>Acesse a planilha financeira do grupo para visualizar e editar dados administrativos.</p>
-                    <button>ACESSAR PLANILHA</button>
-                </div>
-                <div class="admin-card" onclick="acessarControlePagamentos()">
-                    <h3>💵 CONTROLE DE PAGAMENTOS</h3>
-                    <p>Acesse o sistema de controle de pagamentos do grupo para gerenciar as contribuições dos membros.</p>
-                    <button>ACESSAR CONTROLE</button>
-                </div>
-                <div class="admin-card" onclick="acessarGaleria()">
-                    <h3>Controle da Galeria de fotos - ADM Site</h3>
-                    <p>Acesse o controle administrativo da galeria de fotos do site.</p>
-                    <button>ACESSAR</button>
-                </div>
+            
+            <button onclick="window.location.href='documentacao_admin.html'">DOCUMENTAÇÃO DE ADMINISTRAÇÃO</button>
+
+            <button onclick="acessarPlanilha()">PLANILHA FINANCEIRA (Kleber)</button>
+            <button onclick="acessarControlePagamentos()">CONTROLE DE PAGAMENTOS (Kleber)</button>
+            
+            <button onclick="acessarGaleria()">SINCRONISMO MANUAL DA GALERIA (Nando)</button>
+            
+            <div class="info-link">
+                <p>Acesso ao Sumário Caixa (Visualização: Selva e Kleber)</p>
             </div>
-
         </div>
-
     </main>
 
-
     <footer class="rodape">
-            <p>&copy; 2025 FACA NA CAVEIRA MG. ARRAIAL DO CABO  RJ-BRASIL.</p>
+       <p>&copy; 2013 - 2025 FACA NA CAVEIRA MG | RJ-BRASIL</p>
     </footer>
 
     <script>
-        // Dados padrão dos aniversariantes (mesmo que em aniversariantes.html)
-        const aniversariantesPadrao = [
-            {
-                "nome": "SELVA",
-                "data": "15-01",
-                "foto": "MEMBROS/SELVA.jpg",
-                "cargo": "PRESIDENTE"
-            },
+        // *** IMPORTANTE: Substitua 'SENHA_MUITO_SECRETA' pela senha real! ***
+        const CORRECT_PASSWORD = 'SENHA_MUITO_SECRETA'; 
 
-            {
-                "nome": "CELESTE",
-                "data": "08-07",
-                "foto": "MEMBROS/CELESTE.png",
-                "cargo": "MEMBRO"
-            },
-            {
-                "nome": "AMARO",
-                "data": "14-09",
-                "foto": "MEMBROS/AMARO.png",
-                "cargo": "MEMBRO"
-            },
-            {
-                "nome": "KLEBER",
-                "data": "04-11",
-                "foto": "MEMBROS/kleber.png",
-                "cargo": "MEMBRO"
-            },
-            {
-                "nome": "NANDO",
-                "data": "27-12",
-                "foto": "MEMBROS/Nando.png",
-                "cargo": "MEMBRO ASPIRANTE"
-            },
-            {
-                "nome": "HARVRE",
-                "data": "19-02",
-                "foto": "MEMBROS/Harvre.png",
-                "cargo": "MEMBRO"
-            },
-            {
-                "nome": "MISSÃO",
-                "data": "04-04",
-                "foto": "MEMBROS/WALDECK.jpg",
-                "cargo": "MEMBRO ASPIRANTE"
-            }
-        ];
-
-        const CORRECT_PASSWORD = "adsumus";
-        const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1IRiUE7ibA3Nk_F50sMvrbKHsBb-kDVJJ2FU9Lf-mMBI/edit?usp=sharing";
+        // URLs dos seus sistemas no Google Apps Script/Sheets
+        const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1234567890abcdefghijklmnopqrstuvwxyz/edit"; // SUBSTITUIR
         const PAGAMENTOS_URL = "https://script.google.com/macros/s/AKfycbykiEqvYnmIK_YRLSqA0SB4706j4AXv1UDgqOtHcCmuj4L7Oa0rhE9wzsaLhO40pR5yXA/exec";
-
-
+        const GALERIA_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdf9pqjyXNDUuUCPtJBQrh2-I6TLfg.../exec"; // SUBSTITUIR
 
         // Função para verificar se a tecla pressionada é ENTER (desktop)
         function handleKey(event) {
@@ -344,12 +179,9 @@
         }
 
         function acessarGaleria() {
-            window.location.href = "https://script.google.com/macros/s/AKfycbxdf9pqjyXNDUuUCPtJBQrh2-I6TLfgNjEXaRidiQnzvrzwSq39BJRmL8bc8GRSC6Y/exec";
+            window.location.href = GALERIA_SCRIPT_URL;
         }
-
-
     </script>
-
 
 </body>
 </html>
