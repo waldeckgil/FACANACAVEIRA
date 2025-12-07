@@ -310,25 +310,6 @@
                 <li><strong>Objetivo:</strong> Automatizar a criação da aba anual <strong>CALENDARIO_PGTO\_[ANO]</strong> para o sistema de pagamentos.</li>
                 <li><strong>Script:</strong> Acesse o código do Script Controle de Pagamentos (é um projeto diferente do script da Galeria): <a href="https://script.google.com/u/0/home/projects/1BmwVLhtsCiMpzB8NbGcRISKhbEYvUKFMmbqCS7GJ9IpQb6CNXm1hghSD/edit" target="_blank" class="link-destaque">Link do Código</a>.</li>
             </ul>
-
-            <h5>Configuração do Acionador Anual</h5>
-            <p>O acionador é configurado como <strong>Mensal</strong>, mas o código da função <code>createCalendarSheet</code> verifica a data e a existência da aba, garantindo que ele execute o trabalho de criação **apenas uma vez** por ciclo anual.</p>
-            
-            <ol>
-                <li>No painel do Apps Script, clique em <strong>Acionadores</strong> (ícone de relógio) no menu lateral.</li>
-                <li>Crie um novo acionador com as seguintes opções:
-                    <ul>
-                        <li><strong>Função:</strong> <code>createCalendarSheet</code></li>
-                        <li><strong>Fonte do Evento:</strong> Baseado no tempo</li>
-                        <li><strong>Tipo do Acionador:</strong> A cada mês</li>
-                        <li><strong>Dia/Hora:</strong> 1º dia do mês (Ex: 1h às 2h da manhã)</li>
-                    </ul>
-                </li>
-            </ol>
-            
-            <div class="aviso">
-                <strong>Informação Importante:</strong> A função tem lógica interna para rodar tanto em Dezembro (preparando o ano seguinte) quanto em Janeiro (finalizando o ano atual). O Acionador Mensal garante que o script não seja esquecido, mas a lógica de verificação impede criações duplicadas.
-            </div>
             </div>
     </main>
 
