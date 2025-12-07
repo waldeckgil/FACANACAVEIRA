@@ -246,17 +246,17 @@
                     <tr>
                         <td>Registro de Pagamento/Membro</td>
                         <td>Registro</td>
-                        <td>Conforme recebimento dos pagamentos. **DICA:** Verifique a **Mensagem de Feedback** abaixo do formulário após submeter para confirmar que o registro foi feito com sucesso.</td>
+                        <td>Conforme recebimento dos pagamentos.</td>
                     </tr>
                     <tr>
                         <td>Gestão de Inadimplência</td>
                         <td>Pendências</td>
-                        <td>Início do mês (para emissão de cobranças).</td>
+                        <td>Início do mês (Check de Pendencias).</td>
                     </tr>
                     <tr>
                         <td>Relatório Mensal</td>
                         <td>Sumário do Caixa</td>
-                        <td>Fechamento mensal (para prestação de contas ao Selva).</td>
+                        <td>Fechamento mensal (prestação de contas).</td>
                     </tr>
                 </tbody>
             </table>
@@ -266,36 +266,36 @@
             
             <h4>Links e Ambientes Principais</h4>
             <ul>
-                <li><strong>Diretório de Trabalho Local:</strong> Onde todos os arquivos do site são editados e os comandos Git são executados.
+                <li><strong>Diretório de Trabalho Local:</strong> .
                     <br><code>C:\WALDECK_IA\FACA_NACAVEIRA</code>
                 </li>
-                <li><strong>Repositório GitHub:</strong> Onde o código-fonte fica armazenado e de onde o Netlify faz o *deploy*.
+                <li><strong>Repositório GitHub:</strong> Onde o código-fonte fica armazenado .
                     <br><a href="https://github.com/waldeckgil/FACANACAVEIRA" target="_blank" class="link-destaque">https://github.com/waldeckgil/FACANACAVEIRA</a>
                 </li>
                 <li><strong>Dashboard Netlify:</strong> Painel de controle para monitorar *deploys* e verificar logs do site.
                     <br><a href="https://app.netlify.com/projects/facanacaveira/overview" target="_blank" class="link-destaque">https://app.netlify.com/projects/facanacaveira/overview</a>
                 </li>
-                <li><strong>Script Controle de Pagamentos (Código):</strong> Acesso direto ao código do sistema de pagamentos (para manutenção).
+                <li><strong>Script Controle de Pagamentos (Código):</strong> Código do sistema de pagamentos (para manutenção).
                     <br><a href="https://script.google.com/u/0/home/projects/1BmwVLhtsCiMpzB8NbGcRISKhbEYvUKFMmbqCS7GJ9IpQb6CNXm1hghSD/edit" target="_blank" class="link-destaque">Script Pagamentos</a>
                 </li>
             </ul>
 
             <h4>Comando Principal: Publicação (`push_to_git_v2.ps1`)</h4>
             <ul>
-                <li><strong>Função:</strong> Automatiza o fluxo de trabalho Git: adiciona todas as alterações (`git add .`), cria a confirmação (`git commit -m "[Mensagem]"`) e envia para o GitHub (`git push`).</li>
+                <li><strong>Função:</strong> Automatiza o fluxo de trabalho Git: adiciona todas as alterações ,  e envia para o GitHub .</li>
                 <li><strong>Ação:</strong> Após salvar TODAS as mudanças nos arquivos, rodar: <code>.\push_to_git_v2.ps1</code></li>
-                <li><strong>Mensagem:</strong> Sempre use uma mensagem de confirmação clara (Ex: "Atualizado Irmandade", "Corrigido Aniversariante"). Isso facilita a rastreabilidade e a reversão de erros.</li>
+                <li><strong>Mensagem:</strong> Sempre use uma mensagem de confirmação clara (Ex: "Atualizado Irmandade"). </li>
             </ul>
 
             <h4>Checklist Antes de Publicar (Waldeck)</h4>
             <ul>
                 <li><strong>Verificar o Status Local:</strong> Antes de rodar o script, execute <code>git status</code>. Certifique-se de que todos os arquivos que você editou (HTML, CSS, etc.) estão listados e prontos para o *commit*.</li>
                 <li><strong>Conflitos:</strong> Se o <code>git status</code> indicar "Conflitos", **NÃO** rode o `push_to_git_v2.ps1`. O código precisa ser resolvido manualmente.</li>
-                <li><strong>Conexão:</strong> Verifique se você está conectado à internet e se o seu token de acesso ao GitHub está válido. Erros de conexão ou autenticação impedirão o `git push`.</li>
+                <li><strong>Conexão:</strong> Erros de conexão ou autenticação impedirão o `git push`.</li>
             </ul>
 
             <h4>Comando de Emergência: Restauração (`restore_state.sh`)</h4>
-            <p>Este script é a sua "cápsula do tempo". Ele permite voltar o código de um arquivo, pasta ou do site inteiro para uma versão anterior que estava funcionando, corrigindo erros críticos de forma rápida.</p>
+            <p>Este script é a "cápsula do tempo". Ele permite voltar o código de um arquivo, pasta ou do site inteiro para uma versão anterior que estava funcionando, corrigindo erros críticos de forma rápida.</p>
             <ul>
                 <li><strong>Uso:</strong> **SOMENTE em CASO DE ERRO GRAVE** (site quebrado, arquivos deletados, erro de código visível na página).</li>
                 <li><strong>Ação:</strong> Rodar o script no terminal: <code>./restore_state.sh</code></li>
