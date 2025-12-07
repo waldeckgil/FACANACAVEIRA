@@ -276,19 +276,34 @@
             </ul>
 
             <h4>Comando de Emergência: Restauração (`restore_state.sh`)</h4>
+            <p>Este script é a sua "cápsula do tempo". Ele permite voltar o código de um arquivo, pasta ou do site inteiro para uma versão anterior que estava funcionando, corrigindo erros críticos de forma rápida.</p>
             <ul>
-                <li><strong>Função:</strong> **Volta o site no tempo** (desfaz a última alteração) se algo der errado (erro de código). Ele usa <code>git revert HEAD</code> ou <code>git reset --hard</code>.</li>
-                <li><strong>Uso:</strong> SOMENTE se o site quebrar, exibir erros críticos ou se um arquivo essencial for deletado por engano.</li>
-                <li><strong>Ação:</strong> Rodar o script: <code>./restore_state.sh</code></li>
-                <li><strong>Local de Execução:</strong> O script deve ser executado a partir do seu diretório-raiz (<code>C:\WALDECK_IA</code>) ou equivalente no Linux:
-                    <ul>
-                        <li><strong>Windows (PowerShell):</strong> <code>C:\WALDECK_IA</code>.</li>
-                        <li><strong>Linux WSL:</strong> A partir de <code>wgcb@BOOK-DV7TPQ9IUB:/mnt/c/WALDECK_I</code>.</li>
-                    </ul>
-                </li>
-                <li><strong>Aviso:</strong> A restauração irá **perder** quaisquer alterações locais que ainda não foram comitadas.</li>
+                <li><strong>Uso:</strong> **SOMENTE em CASO DE ERRO GRAVE** (site quebrado, arquivos deletados, erro de código visível na página).</li>
+                <li><strong>Ação:</strong> Rodar o script no terminal: <code>./restore_state.sh</code></li>
+                <li><strong>Local de Execução:</strong> A partir do diretório raiz <code>C:\WALDECK_IA</code> (ou <code>/mnt/c/WALDECK_IA</code> no WSL).</li>
             </ul>
 
+            <h5>Funcionamento do Script (Passo a Passo)</h5>
+            <ol>
+                <li><strong>Exibição do Histórico:</strong> O script primeiro lista os **últimos 10 commits** (mensagens de publicação) que foram feitos no site.</li>
+                <li><strong>Pergunta 1: Digite o SHA:</strong>
+                    <ul>
+                        <li><strong>O que é SHA?</strong> É o número de identificação único daquela versão do código (o "log"). Ex: <code>4a3db9a</code>. Você deve olhar a lista exibida e digitar o SHA da **última versão que você lembra que estava funcionando corretamente**.</li>
+                    </ul>
+                </li>
+                <li><strong>Pergunta 2: O que restaurar?</strong>
+                    <ul>
+                        <li><strong>'.' (Ponto):</strong> Restaura **TODO** o projeto para a versão do SHA escolhido (uso mais comum em emergências).</li>
+                        <li><strong>Nome da Pasta (Ex: GALERIA):</strong> Restaura apenas o conteúdo daquela pasta específica.</li>
+                        <li><strong>Nome do Arquivo (Ex: index.html):</strong> Restaura apenas o arquivo HTML para a versão escolhida.</li>
+                    </ul>
+                </li>
+                <li><strong>Execução:</strong> Após as respostas, o script automaticamente restaura os arquivos locais, faz um novo commit com a mensagem de restauração e envia a versão corrigida para o GitHub, fazendo o Netlify publicar o estado anterior.</li>
+            </ol>
+            
+            <div class="aviso">
+                <strong>AVISO IMPORTANTE:</strong> A restauração irá **perder** quaisquer alterações locais que você tenha feito e não salvou no GitHub (que não foram rodadas com o <code>push_to_git_v2.ps1</code>). Use-o com cautela.
+            </div>
             <h4>Manutenção de Calendário Web (App Script)</h4>
             <p>Rotina anual para a criação das abas de calendário de pagamentos.</p>
             <ul>
