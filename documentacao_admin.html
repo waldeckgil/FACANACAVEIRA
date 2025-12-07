@@ -200,10 +200,19 @@
             <h3>2. Guia de Uso: Sistema de Controle de Pagamentos (Kleber)</h3>
             <p>O Diretor Financeiro acessa o sistema via link na Área Administrativa (<a href="https://script.google.com/macros/s/AKfycbzfEHwH9h5_l_knbMPfGs-yQRVNSAf4h_Y5VkUomjLXqyI91bWrqMcJtKnEnCjqsorf/exec" target="_blank" class="link-destaque">acessarControlePagamentos()</a>).</p>
             
-            <h4>Estrutura e Segurança</h4>
+            <h4>Estrutura de Dados Crítica</h4>
             <ul>
-                <li><strong>Senha de Registro:</strong> É **obrigatória** para lançar pagamentos ou incluir novos membros no sistema.</li>
-                <li><strong>Base de Dados:</strong> O sistema depende de três abas principais: **CADASTRO**, **VALORES** e **CALENDARIO_PGTO_AAAA**. Mantenha-as precisas.</li>
+                <li><strong>Atenção aos Nomes das Abas:</strong> O sistema depende de nomes de abas fixos na planilha: **CADASTRO**, **VALORES**, **PENDÊNCIAS**, **SUMÁRIO DO CAIXA** e **CALENDARIO_PGTO_AAAA**. **Não renomeie nenhuma dessas abas**, pois isso quebrará o App Script.</li>
+                <li><strong>Base de Dados:</strong> As abas **CADASTRO** e **VALORES** são a base de dados. Mantenha as colunas originais e preenchidas de forma precisa, sem reordenamento.</li>
+                <li><strong>Calendário Anual:</strong> O sistema gera uma nova aba **CALENDARIO_PGTO\_[ANO]** automaticamente no início do ano. Verifique se os dados na aba **VALORES** estão configurados para o novo ciclo antes que a nova aba seja criada.</li>
+            </ul>
+
+            <h4>Fluxo Operacional de Registro</h4>
+            <ul>
+                <li><strong>Prioridade da Senha:</strong> A **Senha de Registro** (definida nas Propriedades do Script) é **obrigatória** para qualquer registro de pagamento. Ela garante a segurança dos lançamentos.</li>
+                <li><strong>Seleção Mensal Obrigatória:</strong> Ao registrar um pagamento, certifique-se de selecionar o **Mês** correto no formulário. É o mês de referência para o pagamento que está sendo efetuado.</li>
+                <li><strong>Registro de Novos Membros:</strong> Ao usar o formulário de registro, se o membro for novo, marque a opção correspondente. O script irá **adicionar automaticamente** o nome e o valor da mensalidade (se fornecido) na aba **CADASTRO** antes de registrar o pagamento.</li>
+                <li><strong>Timestamp de Lançamento:</strong> O sistema registra o pagamento com a **data e hora exatas** do momento em que o formulário é submetido, funcionando como uma auditoria de lançamento.</li>
             </ul>
 
             <h4>Fluxo de Trabalho</h4>
@@ -219,7 +228,7 @@
                     <tr>
                         <td>Registro de Pagamento/Membro</td>
                         <td>Registro</td>
-                        <td>Conforme recebimento dos pagamentos.</td>
+                        <td>Conforme recebimento dos pagamentos. **DICA:** Verifique a **Mensagem de Feedback** abaixo do formulário após submeter para confirmar que o registro foi feito com sucesso.</td>
                     </tr>
                     <tr>
                         <td>Gestão de Inadimplência</td>
