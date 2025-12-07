@@ -85,6 +85,18 @@
             font-size: 1em;
             margin: 5px 0;
         }
+        /* INÍCIO DAS ALTERAÇÕES PARA O LINK DO EVENTO */
+        .link-evento {
+            text-decoration: none; /* Remove sublinhado do link */
+            color: inherit; /* Mantém a cor do texto do card */
+            display: block; /* Garante que o link ocupe todo o espaço do card */
+            cursor: pointer;
+        }
+        .link-evento:hover {
+            /* Mantém o efeito visual do card, mas garante a aparência de link */
+            opacity: 0.9;
+        }
+        /* FIM DAS ALTERAÇÕES PARA O LINK DO EVENTO */
     </style>
 </head>
 <body>
@@ -154,7 +166,7 @@
                 "img_temp": "N"
             },
           
-      {
+            {
                 //           ***** EVENTO TEMPORARIO    *********************************
                 "nome": "VIAGEM DO ROCK MOTO FEST - Tanguá - RJ 16 a 18 de Janeiro ",
                 "data": "18-01-2025",
@@ -189,7 +201,7 @@
             },
 
 
-      {
+            {
                 "nome": "11  DE DEZEMBRO APRESENTAÇÃO DO SITE A DIRETORIA FACA NA CAVEIRA MG",
                 "data": "11-12",
                 "foto": "DATAS_COMEMORATIVAS_EVENTOS/FACA.jpg",
@@ -209,7 +221,6 @@
                 "img_temp": "S",
                 "link": "https://mototour.com.br/26-encontro-nacional-de-motociclistas"
             } // ATENÇÃO: É o último objeto do array, NÃO PODE TER VÍRGULA aqui.
-            // Se você adicionar mais eventos no futuro, a vírgula deve ir APÓS o '}' acima e antes do próximo '{'.
         
         ];
 
@@ -269,7 +280,8 @@
                 return diaEvento >= diaAtual; //
             });
         }
-
+        
+        // --- FUNÇÃO CORRIGIDA: Implementa a lógica do link ---
         function criarCardData(data) {
             // Ajuste para formatar DD/MM ou DD/MM/YYYY no card
             const dataParts = data.data.split('-');
@@ -281,16 +293,38 @@
             const currentYear = new Date().getFullYear();
             const age = data.anoNascimento && data.anoNascimento !== "" ? currentYear - data.anoNascimento : null;
             const ageDisplay = age !== null ? `<p class="idade">${age} anos</p>` : '';
-            return `
-                <div class="data-card">
-                    <img src="${data.foto}" alt="Foto de ${data.nome}" onerror="this.src='MEMBROS/FACA.png'">
-                    <h3>${data.nome}</h3>
-                    <p>${data.cargo}</p>
-                    ${ageDisplay}
-                    <p class="data-aniversario">${dia}/${mes}${ano}</p>
-                </div>
+
+            // 1. O conteúdo principal do card
+            const cardContent = `
+                <img src="${data.foto}" alt="Foto de ${data.nome}" onerror="this.src='MEMBROS/FACA.png'">
+                <h3>${data.nome}</h3>
+                <p>${data.cargo}</p>
+                ${ageDisplay}
+                <p class="data-aniversario">${dia}/${mes}${ano}</p>
             `;
+
+            // 2. Verifica se existe um link
+            const eventLink = data.link ? data.link : null; 
+
+            // 3. Decide se o card será uma âncora (link) ou uma div (estático)
+            if (eventLink) {
+                // É um link: retorna o conteúdo dentro de uma tag <a>
+                return `
+                    <a href="${eventLink}" target="_blank" class="data-card link-evento">
+                        ${cardContent}
+                    </a>
+                `;
+            } else {
+                // Não é um link: retorna a div normal
+                return `
+                    <div class="data-card">
+                        ${cardContent}
+                    </div>
+                `;
+            }
         }
+        // --- FIM DA FUNÇÃO CORRIGIDA ---
+
 
         function exibirDatasComemorativas() {
             const mesAtual = obterMesAtual();
