@@ -90,6 +90,20 @@
         .link-destaque:hover {
             text-decoration: underline;
         }
+        /* NOVO ESTILO PARA O ÍCONE DO WHATSAPP */
+        .whatsapp-icon {
+            height: 24px; /* Tamanho do ícone */
+            width: 24px;
+            vertical-align: middle; /* Alinha o ícone com o texto ao lado, se houver */
+            margin-right: 8px; /* Espaçamento à direita do ícone */
+        }
+        .link-contato {
+            text-decoration: none; /* Remove sublinhado do link */
+            color: inherit; /* Mantém a cor do texto da lista */
+        }
+        .link-contato:hover .whatsapp-icon {
+            opacity: 0.8; /* Efeito hover no ícone */
+        }
     </style>
 </head>
 <body>
@@ -313,26 +327,39 @@
             </ul>
 
             <h3>4. Contatos Rápidos da Diretoria (WhatsApp)</h3>
-            <p>Use os links abaixo para iniciar conversas rápidas via WhatsApp:</p>
+            <p>Use o ícone do WhatsApp abaixo para iniciar conversas rápidas:</p>
             <ul>
                 <li>
                     <strong>PRESIDENTE - SELVA:</strong> 
-                    <a href="https://wa.me/5522999878510?text=Ol%C3%A1%20Selva%2C%20preciso%20de%20um%20assunto%20urgente%20da%20Diretoria." target="_blank" class="link-destaque">Iniciar Chat</a>
+                    <a href="https://wa.me/5522999878510?text=Ol%C3%A1%20Selva%2C%20preciso%20de%20um%20assunto%20urgente%20da%20Diretoria." target="_blank" class="link-contato">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="whatsapp-icon">
+                        (22) 99987-8510
+                    </a>
                 </li>
                 <li>
                     <strong>DIRETOR SOCIAL - NANDO:</strong> 
-                    <a href="https://wa.me/5521999217540?text=Ol%C3%A1%20Nando%2C%20assunto%20sobre%20eventos%20e%20Galeria." target="_blank" class="link-destaque">Iniciar Chat</a>
+                    <a href="https://wa.me/5521999217540?text=Ol%C3%A1%20Nando%2C%20assunto%20sobre%20eventos%20e%20Galeria." target="_blank" class="link-contato">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="whatsapp-icon">
+                        (21) 99921-7540
+                    </a>
                 </li>
                 <li>
                     <strong>DIRETOR FINANCEIRO - KLEBER:</strong> 
-                    <a href="https://wa.me/5522981606835?text=Ol%C3%A1%20Kleber%2C%20assunto%20sobre%20financeiro%2Fpagamentos." target="_blank" class="link-destaque">Iniciar Chat</a>
+                    <a href="https://wa.me/5522981606835?text=Ol%C3%A1%20Kleber%2C%20assunto%20sobre%20financeiro%2Fpagamentos." target="_blank" class="link-contato">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="whatsapp-icon">
+                        (22) 98160-6835
+                    </a>
                 </li>
                 <li>
                     <strong>ADMINISTRADOR SITE - WALDECK:</strong> 
-                    <a href="https://wa.me/5521964120231?text=Ol%C3%A1%20Waldeck%2C%20assunto%20sobre%20manuten%C3%A7%C3%A3o%20do%20site." target="_blank" class="link-destaque">Iniciar Chat</a>
+                    <a href="https://wa.me/5521964120231?text=Ol%C3%A1%20Waldeck%2C%20assunto%20sobre%20manuten%C3%A7%C3%A3o%20do%20site." target="_blank" class="link-contato">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png" alt="WhatsApp Icon" class="whatsapp-icon">
+                        (21) 96412-0231
+                    </a>
                 </li>
             </ul>
-            </div>
+
+        </div>
     </main>
 
     <footer class="rodape">
