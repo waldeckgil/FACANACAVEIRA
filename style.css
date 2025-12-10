@@ -181,15 +181,18 @@ body {
 /* --- ESTILOS GERAIS DE CONTEUDO --- */
 
 .container-texto {
+
     max-width: 900px;
+
     margin: 0 auto 50px auto;
+
     text-align: center;
+
 }
 
 .container-texto p {
     margin-bottom: 20px;
-    font-size: 14px; /* Tente 14px para uma redução perceptível */
-  
+    font-size: 1.1em;
 }
 
 .pilares {
