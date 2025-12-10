@@ -188,8 +188,8 @@ body {
 
 .container-texto p {
     margin-bottom: 20px;
-    font-size: 0.9em; /* Valor reduzido para diminuir a fonte */
-
+    font-size: 14px; /* Tente 14px para uma redução perceptível */
+  
 }
 
 .pilares {
