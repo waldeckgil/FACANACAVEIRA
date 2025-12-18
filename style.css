@@ -479,3 +479,27 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* AJUSTE ESPECÍFICO PARA O VÍDEO E LEGENDA */
+.video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.legenda-video {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    font-size: 0.8em; /* Tamanho menor solicitado */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px var(--cor-vermelho);
+}
+
+/* Mantém o padrão da galeria no vídeo */
+.video-item iframe.foto-galeria {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+}
