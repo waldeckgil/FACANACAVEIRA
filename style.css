@@ -479,27 +479,33 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
 /* AJUSTE ESPECÍFICO PARA O VÍDEO E LEGENDA */
 .video-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    /* Faz o container do vídeo ser quadrado como as fotos */
+    aspect-ratio: 1 / 1; 
 }
 
 .legenda-video {
     color: var(--cor-amarelo);
     font-family: var(--fonte-titulo);
     font-weight: bold;
-    font-size: 0.8em; /* Tamanho menor solicitado */
-    margin-bottom: 8px;
+    font-size: 0.8em;
+    margin-bottom: 5px;
     text-transform: uppercase;
     text-shadow: 1px 1px 2px var(--cor-vermelho);
+    text-align: center;
 }
 
-/* Mantém o padrão da galeria no vídeo */
+/* Força o iframe a ocupar o espaço restante do box quadrado */
 .video-item iframe.foto-galeria {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    flex-grow: 1; /* Preenche o espaço abaixo da legenda */
     background-color: #000;
+    object-fit: cover; /* Garante que o vídeo se ajuste ao box */
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 5px;
 }
