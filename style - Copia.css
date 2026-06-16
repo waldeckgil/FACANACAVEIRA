@@ -1,0 +1,526 @@
+/* GERAL E FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --cor-preto: #111; /* Preto quase absoluto para o fundo */
+    --cor-vermelho: #FF0000; /* Vermelho */
+    --cor-amarelo: #FFD700; /* Amarelo/Dourado do logo */
+    --cor-branco: #EAEAEA; /* Branco suave para textos */
+    --fonte-titulo: 'Oswald', sans-serif;
+    --fonte-corpo: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    color: var(--cor-branco);
+    line-height: 1.0;
+    
+    /* === ESTILOS DE FUNDO (CABEIRA_MOTOS.JPG) === */
+    background-image: url('Caveira_Motos.jpg'); 
+    background-size: cover; /* Garante que a imagem cubra todo o corpo */
+    background-repeat: no-repeat; /* Impede repeticao */
+    background-attachment: fixed; /* Fixa a imagem, o conteudo rola por cima */
+    background-position: center center; /* Centraliza a imagem */
+    background-color: var(--cor-preto); /* Cor de fallback */
+    /* ================================================= */
+}
+
+/* CABECALHO */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #000;
+    border-bottom: 3px solid var(--cor-vermelho); /* Linha divisoria vermelha */
+}
+
+.logo {
+    height: 120px; /* Ajuste o tamanho do logo */
+}
+
+/* MENU DE NAVEGACAO */
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+}
+
+.menu-principal li {
+    margin-left: 20px;
+}
+
+.menu-principal a {
+    text-decoration: none;
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    font-size: 1.1em;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.menu-principal a:hover, .menu-principal a.ativo {
+    color: var(--cor-vermelho);
+    border-bottom: 2px solid var(--cor-amarelo); 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); 
+}
+
+/* SECAO HOME (Com a Logo de Fundo) */
+.secao-home {
+    height: 70vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* PSEUDO-ELEMENTO PARA O BACKGROUND SUAVE (MARCA D'AGUA) */
+.secao-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('FACA.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%; /* Aumenta a logo para ocupar mais espaco */
+    opacity: 0.15; /* Aumenta a visibilidade */
+    z-index: -1; 
+}
+
+.conteudo-principal {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 40px;
+    border-radius: 10px;
+    z-index: 10; 
+    /* ESTILO ADICIONADO PARA REDUZIR O TAMANHO (Home Page) */
+    max-width: 800px; /* Define uma largura maxima de 800 pixels */
+    width: 90%;      /* Usa 90% da largura da tela, mas nunca mais que 800px */
+}
+
+.conteudo-principal h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 3em;
+    color: var(--cor-amarelo);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px var(--cor-vermelho); 
+}
+
+.lema {
+    font-size: 1.2em;
+    color: var(--cor-branco); 
+    margin-bottom: 30px;
+    font-weight: bold;
+    /* --- NOVO ESTILO PARA ITALICO --- */
+    font-style: italic;
+    /* -------------------------------- */
+}
+
+
+
+
+.botao-cta {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--cor-vermelho);
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-family: var(--fonte-titulo);
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.botao-cta:hover {
+    background-color: var(--cor-amarelo);
+    color: var(--cor-preto);
+}
+
+/* SECOES SECUNDARIAS */
+.secao-padrao {
+    padding: 30px 50px;
+    border-top: 1px solid #333;
+    
+    /* === NOVO FUNDO PARA CONTEUDO PARA MELHOR LEGIBILIDADE === */
+    background-color: rgba(0, 0, 0, 0.75); /* Fundo preto semi-transparente */
+    /* ========================================================= */
+}
+
+.secao-padrao h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-amarelo);
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-top: 2px solid var(--cor-vermelho);
+    border-bottom: 2px solid var(--cor-amarelo);
+    display: inline-block;
+    padding: 5px 0;
+}
+
+/* RODAPE */
+.rodape {
+    text-align: right; /* ALTERADO PARA ALINHAR A DIREITA */
+    padding: 20px;
+    background-color: #000;
+    border-top: 3px solid var(--cor-vermelho);
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-corpo);
+    font-size: 0.9em;
+}
+
+/* --- ESTILOS GERAIS DE CONTEUDO --- */
+
+.container-texto {
+
+    max-width: 900px;
+
+    margin: 0 auto 50px auto;
+
+    text-align: center;
+
+}
+
+.container-texto p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.pilares {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pilares li {
+    margin: 10px 0;
+    color: var(--cor-branco); /* ALTERADO PARA BRANCO */
+    font-weight: bold;
+}
+/* --- ESTILOS ROTAS (Grid de Cartoes) --- */
+
+.grid-rotas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cartao-rota {
+    background-color: #222;
+    border: 1px solid var(--cor-vermelho);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cartao-rota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.5);
+}
+
+.foto-rota {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+}
+
+.info-rota {
+    padding: 20px;
+    text-align: center;
+}
+
+.info-rota h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-amarelo);
+    margin-bottom: 10px;
+}
+
+.data-rota {
+    color: var(--cor-vermelho);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-detalhe {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 15px;
+    background-color: var(--cor-amarelo);
+    color: var(--cor-preto);
+    text-decoration: none;
+    font-family: var(--fonte-titulo);
+    border-radius: 5px;
+}
+
+/* --- ESTILOS IRMANDADE (Grid de Membros) --- */
+
+.titulo-lideranca,.titulo-diretoria, .titulo-membros {
+    width: 100%;
+    text-align: center;
+    font-family: var(--fonte-titulo);
+    color: var(--cor-vermelho);
+    font-size: 1.8em;
+    margin: 40px 0 20px 0;
+    border-bottom: 2px solid var(--cor-amarelo);
+    padding-bottom: 5px;
+}
+
+.grid-membros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.membro-card {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    border: 1px solid #444;
+}
+
+.membro-card.lider {
+    border: 2px solid var(--cor-vermelho);
+    background-color: #333;
+}
+
+.foto-membro {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cor-amarelo);
+    margin-bottom: 10px;
+}
+
+.membro-card h4 {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    margin-bottom: 5px;
+}
+
+.membro-card p {
+    color: var(--cor-branco);
+    font-size: 0.9em;
+}
+
+.patch-rank {
+    display: block;
+    color: var(--cor-vermelho);
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* --- ESTILOS CONTATO --- */
+
+.container-contato {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-contato-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.info-bloco {
+    background-color: #222;
+    padding: 30px 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--cor-vermelho);
+}
+
+.info-bloco h3 {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.detalhe-contato {
+    margin: 5px 0;
+}
+
+/* O estilo generico abaixo sera sobrescrito pelas classes especificas de cor */
+.rede-social {
+    display: block;
+    padding: 10px;
+    background-color: var(--cor-amarelo); /* Cor base (sera sobrescrita) */
+    color: var(--cor-preto);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* --- CORES PADRAO PARA BOTOES DE REDES SOCIAIS (ADICIONADO) --- */
+.rede-social {
+    /* Garante que o texto dentro dos botoes seja branco */
+    color: var(--cor-branco) !important; 
+}
+
+.whatsapp-btn {
+    background-color: #25D366; /* Verde do WhatsApp */
+}
+
+.facebook-btn {
+    background-color: #1877F2; /* Azul do Facebook */
+}
+
+.instagram-btn {
+    background-color: #E4405F; /* Vermelho/Rosa do Instagram (Cor primaria) */
+}
+
+/* Garante que a transicao de cor no hover seja suave */
+.whatsapp-btn:hover {
+    background-color: #128C7E; /* Verde mais escuro no hover */
+}
+
+.facebook-btn:hover {
+    background-color: #145CB3; /* Azul mais escuro no hover */
+}
+
+.instagram-btn:hover {
+    background-color: #C135A1; /* Roxo/Rosa mais escuro no hover */
+}
+/* ------------------------------------------------------------- */
+
+
+/* --- ESTILOS GALERIA (CORRIGIDO PARA RESPONSIVIDADE) --- */
+
+.galeria-grid {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    /* CORRIGIDO: Usa 250px como largura minima, permitindo 4 ou mais colunas responsivas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.foto-galeria {
+    width: 100%;
+    /* CORRIGIDO: Forca a proporcao 1:1 (quadrada), removendo a altura fixa (300px) */
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; /* Recorta a imagem para preencher o espaco sem distorcer */
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.foto-galeria:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Efeito de brilho amarelo no hover */
+}
+
+
+/* ==================================== */
+/* RESPONSIVIDADE (MOBILE)      */
+/* ==================================== */
+@media (max-width: 768px) {
+    
+    /* Cabecalho */
+    .cabecalho {
+        flex-direction: column; 
+        padding: 10px 20px;
+    }
+
+    .menu-principal ul {
+        flex-direction: column; 
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .menu-principal li {
+        margin: 5px 0;
+    }
+
+    .logo {
+        height: 60px; 
+    }
+
+    /* Home Page */
+    .conteudo-principal {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    .conteudo-principal h1 {
+        font-size: 2em; 
+    }
+
+    /* Contato e Blocos */
+    .info-contato-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Galeria em Mobile */
+    .galeria-grid {
+        /* 1 coluna em celulares */
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* AJUSTE DEFINITIVO PARA ALINHAMENTO POR BAIXO */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 15px;
+    padding: 0 20px;
+    align-items: end; /* ISSO ALINHA O VÍDEO E AS FOTOS PELA BASE */
+}
+
+.video-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.legenda-video {
+    color: var(--cor-amarelo);
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    /* Removida altura fixa para permitir ajuste natural */
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Mantém o tamanho igual às fotos */
+    position: relative;
+    border: 3px solid var(--cor-vermelho);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
